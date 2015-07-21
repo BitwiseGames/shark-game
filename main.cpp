@@ -11,6 +11,7 @@ using namespace std;
 #define DELAY_TIME = 1000.0f / FPS
 
 bool startEngine();
+void closeEngine();
 
 int main(int argc, char** argv ){
 
@@ -40,6 +41,7 @@ int main(int argc, char** argv ){
   }
 
   delete game;
+  closeEngine();
   return 0;
 
 }
@@ -64,3 +66,16 @@ bool startEngine(){
   }
   return true;
 }
+
+void closeEngine(){
+  SDL_Quit();
+  IMG_Quit();
+  TTF_Quit();
+  Mix_Quit();
+}
+
+
+
+
+
+

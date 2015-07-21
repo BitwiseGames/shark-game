@@ -10,6 +10,8 @@ class Game {
     void update();
     void render();
 
+    void quitGame();
+
     bool isGameRunning()
     { return gameRunning; };
 

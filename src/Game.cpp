@@ -38,3 +38,16 @@ void Game::update(){
 void Game::render(){
   stateHandler->render();
 }
+
+void Game::quitGame(){
+  SDL_DestroyWindow(gameWindow);
+  delete stateHandler;
+  delete gameWindow;
+  delete renderer;
+  gameRunning = false;
+}
+
+
+
+
+
