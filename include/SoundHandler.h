@@ -20,8 +20,10 @@ class SoundHandler{
 
   private:
     SoundHandler();
-    ~SoundHandler();
+    ~SoundHandler(){ Mix_Close_Audio(); };
     static SoundHandler* theInstance;
+    map<string, Mix_Chunk*> soundEffects;
+    map<string, Mix_Chunk*> music;
   
 };
 
