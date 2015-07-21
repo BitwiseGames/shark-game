@@ -1,0 +1,3 @@
+- download sdl, sdl_image, sdl_ttf, sdl_mixer
+- download tinyxml
+- download tiled and make level
