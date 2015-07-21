@@ -6,7 +6,7 @@ class Game {
 
     static Game* getTheInstance();
 
-    void startGame();
+    bool startGame();
     void update();
     void render();
 
@@ -31,6 +31,7 @@ class Game {
     bool gameRunning;
     int screenHeight = 600;
     int screenWidth = 800;
+    string gameTitle = "Shark Game";
     SDL_Renderer* renderer;
     SDL_Window* gameWindow;
     GameStateHandler* stateHandler;

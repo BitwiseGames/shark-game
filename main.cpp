@@ -1,4 +1,8 @@
 #include <iostream>
+#include "SDL.h"
+#include "SDL_image.h"
+#include "SDL_ttf.h"
+#include "SDL_mixer.h"
 #include "Game.h"
 
 using namespace std;
@@ -15,10 +19,24 @@ int main(int argc, char** argv ){
   }  
 
   Game* game = Game::getTheInstance();
-  game->startGame();
+  if (!game->startGame()){
+    cout << "Failed to start game." << endl;
+    return 1;
+  }
+
+
   while (game->isGameRunning()){
+
+    Uint32 frameStart, frameTime;
+    frameStart = SDL_GetTicks();
+
     game->update();
     game->render();
+
+    frameTime - SDL_GetTicks() - frameStart;
+    if (frameTime < DELAY_TIME){
+      SDL_Delay(int(DELAY_TIME - frameTime));
+    }
   }
 
   delete game;
