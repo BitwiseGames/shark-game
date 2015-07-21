@@ -14,6 +14,8 @@ class GameObject {
     { return health; };
     bool Dying()
     { return dying; };
+    bool Dead()
+    { return dead; };
     Vector2D& Position()
     { return position; };
 
@@ -29,6 +31,7 @@ class GameObject {
     int height;
     int health;
     bool dying;
+    bool dead;
     Vector2D position = Vector2D(0,0);
 };
 
