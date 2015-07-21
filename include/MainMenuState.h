@@ -11,10 +11,13 @@ class MainMenuState : public GameState {
    bool onEnter();
    bool onExit();
 
+   virtual string getStateID() { return menuID; }; 
+
  private:
-  quitGame();
-  startGame();
+  static void quitGame(); // button callbacks
+  static void startGame();
   vector<GameObject*> gameObjects;
+  static const string menuID;
 
 };
 
