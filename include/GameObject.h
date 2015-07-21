@@ -6,6 +6,16 @@ class GameObject {
     virtual void update();
     virtual void render();
 
+    virtual void load(int x, int y, int w, int h, int frames, int cID, int health, string tID){
+        position.setX(x);
+        position.setY(y);
+        width = w;
+        height = h;
+        numFrames = frames;
+        callbackID = cID;
+        textureID = tID;
+    }
+
     int Width()
     { return width; };
     int Height()
@@ -29,9 +39,13 @@ class GameObject {
   protected:
     int width;
     int height;
+    int numFrames;
+    int animSpeed;
+    int callbackID;
     int health;
-    bool dying;
-    bool dead;
+    string textureID;
+    bool dying = false;
+    bool dead = false;
     Vector2D position = Vector2D(0,0);
 };
 
