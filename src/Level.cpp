@@ -8,6 +8,8 @@ Level::~Level(){
 }
 
 void Level::render(){
+    cout << "LEVEL RENDER" << endl;
+    cout << layers.size() << endl;
   for (int i = 0; i < layers.size(); i++){
     layers[i]->render();
   }

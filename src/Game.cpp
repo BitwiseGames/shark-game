@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "GameObjectFactory.h"
 #include "MenuButton.h"
+#include "Player.h"
 #include "MainMenuState.h"
 #include "InputHandler.h"
 
@@ -28,6 +29,7 @@ bool Game::startGame(){
 
   // anything that is not created at runtime (bullets, explosions, ect) must be created here
   GameObjectFactory::getTheInstance()->registerType("MenuButton", new MenuButtonCreator());
+  GameObjectFactory::getTheInstance()->registerType("Player", new PlayerCreator());
 
   stateHandler = new GameStateHandler();
   stateHandler->changeState(new MainMenuState());

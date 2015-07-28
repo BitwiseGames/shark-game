@@ -2,6 +2,7 @@
 #define GAMESTATEHANDLER_H
 
 #include <vector>
+#include <iostream>
 #include "GameState.h"
 
 using namespace std;

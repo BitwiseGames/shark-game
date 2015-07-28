@@ -20,6 +20,7 @@ void MenuButton::update(){
     else {
         currentFrame = MOUSE_OUT;
     }
+    cout << "Done" << endl;
 }
 
 void MenuButton::render(){

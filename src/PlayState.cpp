@@ -1,5 +1,6 @@
 #include "PlayState.h"
 #include "Level.h"
+#include "LevelParser.h"
 
 const string PlayState::playID = "PLAY";
 
@@ -11,7 +12,9 @@ void PlayState::render(){
 }
 
 bool PlayState::onEnter(){
-    cout << "Entering play." << endl;
+    LevelParser levelParser;
+    levelParser.parseLevel("level_1.tmx");
+cout << "finished parsing level" << endl;
     return true;
 }
 bool PlayState::onExit(){

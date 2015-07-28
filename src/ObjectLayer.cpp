@@ -23,6 +23,7 @@ void ObjectLayer::update(Level* level){
 }
 
 void ObjectLayer::render(){
+    cout << "OBJECTLAYER RENDER" << endl;
   for (int i = 0; i < gameObjects.size(); i++){
     gameObjects[i]->render();
   }

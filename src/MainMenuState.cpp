@@ -8,14 +8,11 @@
 const string MainMenuState::menuID = "MENU";
 
 void MainMenuState::update(){
-
-  for (int i = 0; i < gameObjects.size(); i++){
-    gameObjects[i]->update();
-  }
-
+    for (int i = 0; i < gameObjects.size(); i++){
+        gameObjects[i]->update();
+    }
 }
 void MainMenuState::render(){
-
     SDL_RenderClear(Game::getTheInstance()->getRenderer());
 
     for (int i = 0; i < gameObjects.size(); i++){
@@ -27,6 +24,7 @@ void MainMenuState::render(){
 }
 
 bool MainMenuState::onEnter(){
+    exiting = false;
     StateParser stateParser;
     stateParser.parseState("game.xml", menuID, &gameObjects, &textureIDList);
 
@@ -40,12 +38,13 @@ bool MainMenuState::onEnter(){
     return true;
 }
 bool MainMenuState::onExit(){
-  for (int i = 0; i < gameObjects.size(); i++){
-    delete gameObjects[i];
-  }
-  gameObjects.clear();
-  InputHandler::getTheInstance()->reset();
-  return true;
+    exiting = true;
+    for (int i = 0; i < gameObjects.size(); i++){
+        delete gameObjects[i];
+    }
+    gameObjects.clear();
+    InputHandler::getTheInstance()->reset();
+    return true;
 }
 
 void MainMenuState::quitGame(){

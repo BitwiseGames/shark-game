@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="64" tileheight="64" nextobjectid="3">
+ <tileset firstgid="1" name="tile" tilewidth="64" tileheight="64" spacing="1" margin="1">
+  <image source="Art/tile.png" width="139" height="139"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzwENADAIwDDwb/o2dtImE7CdmT3S73y0+Gjx0eKjxUeLjxYfLT5afLT4aPHR4qPFR4uPFh8tPlp8tPho8dHio8VHi48WHy3XPi70AB2ZAMU=
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1">
+  <object id="1" name="Player" type="Player" x="79.3333" y="78" width="46.6667" height="41.3333">
+   <properties>
+    <property name="numFrames" value="0"/>
+    <property name="textureHeight" value="32"/>
+    <property name="textureID" value="player"/>
+    <property name="textureWidth" value="64"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

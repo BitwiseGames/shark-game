@@ -2,6 +2,7 @@
 #define OBJECTLAYER_H
 
 #include <vector>
+#include <iostream>
 #include "Layer.h"
 #include "GameObject.h"
 

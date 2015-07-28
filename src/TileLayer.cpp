@@ -8,6 +8,7 @@ TileLayer::TileLayer(int ts, int mw, int mh, vector<Tileset>& Tilesets) : tileSi
 }
 
 void TileLayer::render(){
+    cout << "TILELAYER RENDER" << endl;
   int x1, y1, x2, y2 = 0;
   x1 = position.X() / tileSize;
   y1 = position.Y() / tileSize;

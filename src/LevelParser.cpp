@@ -10,7 +10,6 @@
 #include "Level.h"
 
 Level* LevelParser::parseLevel(const char* levelFile){
-
     // create a tixml document and load the map file
     TiXmlDocument levelDoc;
     levelDoc.LoadFile(levelFile);
@@ -22,9 +21,7 @@ Level* LevelParser::parseLevel(const char* levelFile){
     root->Attribute("tileSize", &tileSize);
     root->Attribute("width", &width);
     root->Attribute("height", &height);
-
     TiXmlElement* properties = root->FirstChildElement();
-
     // parse the textures needed for this level
     for(TiXmlElement* e = properties->FirstChildElement(); e != NULL; e = e->NextSiblingElement()){
         if(e->Value() == string("property")){
@@ -50,7 +47,6 @@ Level* LevelParser::parseLevel(const char* levelFile){
             }
         }
     }
-
     return level;
 }
 
@@ -60,9 +56,7 @@ void LevelParser::parseTextures(TiXmlElement* textureRoot){
 }
 
 void LevelParser::parseTilesets(TiXmlElement* tilesetRoot, vector<Tileset>* tilesets){
-
     TextureHandler::getTheInstance()->load(tilesetRoot->FirstChildElement()->Attribute("source"), tilesetRoot->Attribute("name"), Game::getTheInstance()->getRenderer());
-
     // create a tileset object
     Tileset tileset;
     tilesetRoot->FirstChildElement()->Attribute("width", &tileset.width);
@@ -129,12 +123,11 @@ void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *
             // load the object
             gameObject->load(x, y, width, height, numFrames, callbackID, health, animSpeed, textureID);
             // set the collision layers
-            //gameObject->setCollisionLayers(level->getCollisionLayers());
+            gameObject->setCollisionLayers(level->getCollisionLayers());
 
             if(type == "Player"){
                level->setPlayer(dynamic_cast<Player*>(gameObject));
             }
-
             objectLayer->getGameObjects()->push_back(gameObject);
         }
     }
