@@ -19,4 +19,6 @@ void GameObject::load(int x, int y, int w, int h, int frames, int cID, int _heal
     health = _health;
     animSpeed = speed;
     textureID = tID;
+    currentFrame = 0;
+    currentRow = 0;
 }

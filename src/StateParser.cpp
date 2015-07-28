@@ -10,9 +10,10 @@ bool StateParser::parseState(const char* stateFile, string stateID, vector<GameO
     cout << xmlDoc.ErrorDesc() << endl;
     return false;
   }
+
   TiXmlElement* root = xmlDoc.RootElement();
   TiXmlElement* stateRoot = nullptr;
-  for (TiXmlElement* e = stateRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement()){
+  for (TiXmlElement* e = root->FirstChildElement(); e != NULL; e = e->NextSiblingElement()){
     if(e->Value() == stateID){
       stateRoot = e;
       break;

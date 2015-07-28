@@ -12,7 +12,7 @@ GameObjectFactory* GameObjectFactory::getTheInstance(){
 bool GameObjectFactory::registerType(string typeID, BaseCreator* creator){
   map<string, BaseCreator*>::iterator i = creators.find(typeID);
 
-  if (i == creators.end()){ // it already exists, don't need to do anything
+  if (i != creators.end()){ // it already exists, don't need to do anything
     delete creator;
   }
 
@@ -26,6 +26,7 @@ GameObject* GameObjectFactory::create(string typeID){
    cout << "could not find type: " << typeID << endl;
    return NULL;
   }
+
   BaseCreator* creator = (*i).second;
   return creator->createGameObject();
 }

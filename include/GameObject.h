@@ -40,12 +40,16 @@ class GameObject {
     { return dead; };
     Vector2D* Position()
     { return &position; };
+    string getTextureID()
+    { return textureID; };
 
   protected:
     int width;
     int height;
     int numFrames;
     int animSpeed;
+    int currentFrame;
+    int currentRow;
     int callbackID;
     int health;
     string textureID;

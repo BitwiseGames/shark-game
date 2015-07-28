@@ -1,5 +1,6 @@
 #include "MainMenuState.h"
 #include "PlayState.h"
+#include "StateParser.h"
 #include "Game.h"
 
 const string MainMenuState::menuID = "MENU";
@@ -20,6 +21,9 @@ void MainMenuState::render(){
 }
 
 bool MainMenuState::onEnter(){
+    StateParser stateParser;
+    stateParser.parseState("game.xml", menuID, &gameObjects, &textureIDList);
+
   callbacks.push_back(0);
   callbacks.push_back(quitGame);
   callbacks.push_back(startGame);

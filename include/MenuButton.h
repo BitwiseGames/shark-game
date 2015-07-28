@@ -7,12 +7,18 @@
 class MenuButton : public GameObject {
 
   public:
-    MenuButton(){};
+    MenuButton(){ mouseButtonDown = false;};
     ~MenuButton(){};
     void update();
     void render();
   private:
     void (*callback)();
+    bool mouseButtonDown;
+    enum button_state{
+        MOUSE_OUT = 0,
+        MOUSE_OVER = 1,
+        MOUSE_CLICKED = 2
+    };
 
 };
 
