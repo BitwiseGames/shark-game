@@ -1,7 +1,13 @@
 #ifndef OBJECTLAYER_H
 #define OBJECTLAYER_H
 
+#include <vector>
 #include "Layer.h"
+#include "GameObject.h"
+
+using namespace std;
+
+class GameObject;
 
 class ObjectLayer : public Layer {
   public:

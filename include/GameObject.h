@@ -31,8 +31,8 @@ class GameObject {
       }
     }
 
-    void setCollisionLayers(vector<Tilelayer*>* cLayers)
-    { collisionLayers = cLayers; };
+    /*void setCollisionLayers(vector<Tilelayer*>* cLayers)
+    { collisionLayers = cLayers; };*/
 
     int Width()
     { return width; };
@@ -58,7 +58,7 @@ class GameObject {
     bool dying = false;
     bool dead = false;
     Vector2D position = Vector2D(0,0);
-    vector<TileLayer*>* collisionLayers;
+    //vector<TileLayer*>* collisionLayers;
 };
 
 #endif

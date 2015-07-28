@@ -26,7 +26,7 @@ class TileLayer : public Layer {
     { position = newPos; };
     const Vector2D getPosition()
     { return position; };
-    vector<vector<int>>& getTileIDs()
+    const vector<vector<int>>& getTileIDs()
     { return tileIDs; };
 
   private:
@@ -39,7 +39,7 @@ class TileLayer : public Layer {
     Vector2D velocity;
     Vector2D acceleration;
     const vector<Tileset>& tilesets;
-    const vector<vector<int>> tileIDs;
+    vector<vector<int>> tileIDs;
 
 };
 

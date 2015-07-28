@@ -1,12 +1,17 @@
 #ifndef MENUSTATE_H
 #define MENUSTATE_H
 
+#include <vector>
+#include "Callback.h"
+#include "GameState.h"
+
 class MenuState : public GameState {
 
   public:
-    virtual ~MainMenuState(){};
+    virtual ~MenuState(){};
   protected:
-    vector <void(*callback)> callbacks;
+    typedef void(*Callback)();
+    std::vector <Callback> callbacks;
 };
 
 #endif

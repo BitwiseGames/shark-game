@@ -3,7 +3,7 @@
 #include "Game.h"
 #include "TextureHandler.h"
 #include "ObjectLayer.h"
-#incldue "TileLayer.h"
+#include "TileLayer.h"
 #include "GameObjectFactory.h"
 #include "zlib.h"
 #include "base64.h"
@@ -13,17 +13,17 @@ Level* LevelParser::parseLevel(const char* levelFile){
 
     // create a tixml document and load the map file
     TiXmlDocument levelDoc;
-    levelDoc.loadFile(levelFile);
+    levelDoc.LoadFile(levelFile);
 
     Level* level = new Level();
 
     TiXmlElement* root = levelDoc.RootElement();
 
     root->Attribute("tileSize", &tileSize);
-    root->Attribute("width", $width);
-    root->Attribute("height", $height);
+    root->Attribute("width", &width);
+    root->Attribute("height", &height);
 
-    TiXmlElement properties = root->FirstChildElement();
+    TiXmlElement* properties = root->FirstChildElement();
 
     // parse the textures needed for this level
     for(TiXmlElement* e = properties->FirstChildElement(); e != NULL; e = e->NextSiblingElement()){
@@ -51,7 +51,7 @@ Level* LevelParser::parseLevel(const char* levelFile){
         }
     }
 
-    return pLevel;
+    return level;
 }
 
 
@@ -81,9 +81,9 @@ void LevelParser::parseTilesets(TiXmlElement* tilesetRoot, vector<Tileset>* tile
 
 void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *layers, Level* level) {
 
-    ObjectLayer* ojectLayer = new ObjectLayer();
+    ObjectLayer* objectLayer = new ObjectLayer();
 
-    for(TiXmlElement* e = pObjectElement->FirstChildElement(); e != NULL; e = e->NextSiblingElement()){
+    for(TiXmlElement* e = objectElement->FirstChildElement(); e != NULL; e = e->NextSiblingElement()){
         if(e->Value() == string("object")) {
             int x, y, width, height, numFrames, health, callbackID = 0, animSpeed = 0;
             string textureID;
@@ -129,7 +129,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *
             // load the object
             gameObject->load(x, y, width, height, numFrames, callbackID, health, animSpeed, textureID);
             // set the collision layers
-            gameObject->setCollisionLayers(level->getCollisionLayers());
+            //gameObject->setCollisionLayers(level->getCollisionLayers());
 
             if(type == "Player"){
                level->setPlayer(dynamic_cast<Player*>(gameObject));
@@ -143,7 +143,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *
 }
 
 
-void LevelParser::parseTileLayer(TiXmlElement* tileElement, vector<Layer*> *layers, const vector<Tileset>* tilesets, vector<TileLayer*> *collisionLayers) {
+void LevelParser::parseTileLayer(TiXmlElement* tileElement, vector<Layer*>* layers, vector<Tileset>* tilesets, vector<TileLayer*>* collisionLayers) {
     TileLayer* tileLayer = new TileLayer(tileSize, width, height, *tilesets);
 
     bool collidable = false;
@@ -166,11 +166,11 @@ void LevelParser::parseTileLayer(TiXmlElement* tileElement, vector<Layer*> *laye
         }
 
         if(e->Value() == string("data")){
-            pDataNode = e;
+            dataNode = e;
         }
     }
 
-    for(TiXmlNode* e = pDataNode->FirstChild(); e != NULL; e = e->NextSibling()){
+    for(TiXmlNode* e = dataNode->FirstChild(); e != NULL; e = e->NextSibling()){
         TiXmlText* text = e->ToText();
         string t = text->Value();
         decodedIDs = base64_decode(t);
@@ -178,7 +178,7 @@ void LevelParser::parseTileLayer(TiXmlElement* tileElement, vector<Layer*> *laye
 
     // uncompress zlib compression
     uLongf sizeOfIDs = width * height * sizeof(int);
-    vector<int> ids(m_width * m_height);
+    vector<int> ids(width * height);
     uncompress((Bytef*)&ids[0], &sizeOfIDs,(const Bytef*)decodedIDs.c_str(), decodedIDs.size());
 
     vector<int> layerRow(width);
@@ -187,8 +187,8 @@ void LevelParser::parseTileLayer(TiXmlElement* tileElement, vector<Layer*> *laye
         data.push_back(layerRow);
     }
 
-    for(int rows = 0; rows < m_height; rows++){
-        for(int cols = 0; cols < m_width; cols++){
+    for(int rows = 0; rows < height; rows++){
+        for(int cols = 0; cols < width; cols++){
             data[rows][cols] = ids[rows * width + cols];
         }
     }
@@ -199,5 +199,5 @@ void LevelParser::parseTileLayer(TiXmlElement* tileElement, vector<Layer*> *laye
         collisionLayers->push_back(tileLayer);
     }
 
-    layers->push_back(pTileLayer);
+    layers->push_back(tileLayer);
 }

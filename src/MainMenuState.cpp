@@ -1,4 +1,6 @@
 #include "MainMenuState.h"
+#include "PlayState.h"
+#include "Game.h"
 
 const string MainMenuState:: menuID = "MENU";
 
@@ -7,7 +9,7 @@ void MainMenuState::update(){
   for (int i = 0; i < gameObjects.size(); i++){
     gameObjects[i]->update();
   }
-  
+
 }
 void MainMenuState::render(){
 

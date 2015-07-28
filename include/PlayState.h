@@ -3,9 +3,13 @@
 
 #include <string>
 #include <vector>
+#include "GameState.h"
 
+using namespace std;
+
+class Level;
 class PlayState : public GameState {
-  
+
   public:
     virtual ~PlayState(){ delete level; };
 

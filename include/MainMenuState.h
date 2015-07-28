@@ -1,7 +1,16 @@
 #ifndef MAINMENUSTATE_H
 #define MAINMENUSTATE_H
 
-class MainMenuState : public GameState {
+#include <string>
+#include <vector>
+#include "MenuState.h"
+#include "GameObject.h"
+
+using namespace std;
+
+class GameObject;
+
+class MainMenuState : public MenuState {
   public:
    virtual ~MainMenuState(){};
 
@@ -11,7 +20,7 @@ class MainMenuState : public GameState {
    bool onEnter();
    bool onExit();
 
-   virtual string getStateID() { return menuID; }; 
+   virtual string getStateID() { return menuID; };
 
  private:
   static void quitGame(); // button callbacks
