@@ -2,7 +2,7 @@
 #include "PlayState.h"
 #include "Game.h"
 
-const string MainMenuState:: menuID = "MENU";
+const string MainMenuState::menuID = "MENU";
 
 void MainMenuState::update(){
 

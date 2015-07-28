@@ -16,6 +16,7 @@ class Game {
     bool startGame();
     void update();
     void render();
+    void handleInput();
 
     void quitGame();
 

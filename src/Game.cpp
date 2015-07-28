@@ -2,6 +2,7 @@
 #include "GameObjectFactory.h"
 #include "MenuButton.h"
 #include "MainMenuState.h"
+#include "InputHandler.h"
 
 Game* Game::theInstance = nullptr;
 
@@ -40,6 +41,9 @@ void Game::update(){
 }
 void Game::render(){
   stateHandler->render();
+}
+void Game::handleInput(){
+    InputHandler::getTheInstance()->update();
 }
 
 void Game::quitGame(){
