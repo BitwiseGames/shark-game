@@ -1,5 +1,5 @@
 #include "GameObjectFactory.h"
-GameObjectFactory::GameObjectFactory* theInstance = nullptr;
+GameObjectFactory* GameObjectFactory::theInstance = nullptr;
 
 GameObjectFactory* GameObjectFactory::getTheInstance(){
   if (theInstance == nullptr){
@@ -24,7 +24,7 @@ GameObject* GameObjectFactory::create(string typeID){
   if(i == creators.end()){
    cout << "could not find type: " << typeID << endl;
    return NULL;
-  }  
+  }
   BaseCreator* creator = (*i).second;
   return creator->createGameObject();
 }

@@ -1,12 +1,16 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+#include "Vector2D.h"
+#include "GameObject.h"
+#include "Game.h"
+
 class Camera {
   public:
 
     void update();
 
-    Camera* getTheInstance();
+    static Camera* getTheInstance();
 
     Vector2D getPosition();
 
@@ -15,7 +19,7 @@ class Camera {
     }
 
   private:
-    Camera();
+    Camera(){};
     static Camera* theInstance;
     Vector2D position = Vector2D(0,0);
     GameObject* target; // the object that the camera follows, usually the player

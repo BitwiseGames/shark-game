@@ -15,6 +15,6 @@ void Level::render(){
 
 void Level::update(){
   for (int i = 0; i < layers.size(); i++){
-    layers[i]->update();
+    layers[i]->update(this);
   }
 }

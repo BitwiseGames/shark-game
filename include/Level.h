@@ -1,7 +1,15 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
+#include <string>
+#include <vector>
+#include "Layer.h"
+#include "Player.h"
+#include "LevelParser.h"
+
 using namespace std;
+
+class TileLayer;
 
 struct Tileset{
   int firstGridID;

@@ -2,11 +2,12 @@
 #define GAMESTATEHANDLER_H
 
 #include <vector>
+#include "GameState.h"
 
 using namespace std;
 
 class GameStateHandler {
-  
+
   public:
     GameStateHandler(){};
     ~GameStateHandler(){};
@@ -14,7 +15,7 @@ class GameStateHandler {
     void pushState(GameState*);
     void changeState(GameState*);
     void popState();
-    
+
     void update();
     void render();
   private:

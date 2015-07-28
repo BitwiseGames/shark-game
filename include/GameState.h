@@ -10,11 +10,10 @@ class GameState {
     virtual void render()=0;
     virtual bool onEnter()=0;
     virtual bool onExit()=0;
-    virtual string getStateID()=0;
-    virtual GameState(){};
+    virtual std::string getStateID()=0;
   protected:
     GameState(){};
-    vector<string> textureIDList();
+    std::vector<std::string> textureIDList();
 };
 
 #endif

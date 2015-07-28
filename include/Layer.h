@@ -4,7 +4,8 @@
 class Level;
 
 class Layer {
-  virtual ~Layer(){};
+public:
+  virtual ~Layer(){}
 
   virtual void update(Level* level)=0;
   virtual void render()=0;

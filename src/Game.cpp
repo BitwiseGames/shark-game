@@ -1,6 +1,9 @@
 #include "Game.h"
+#include "GameObjectFactory.h"
+#include "MenuButton.h"
+#include "MainMenuState.h"
 
-Game::Game* theInstance = nullptr;
+Game* Game::theInstance = nullptr;
 
 Game* Game::getTheInstance(){
   if (theInstance == nullptr){
@@ -9,8 +12,8 @@ Game* Game::getTheInstance(){
   return theInstance;
 }
 
-void Game::startGame(){
-  gameWindow = SDL_CreateWindow(gameTitle, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
+bool Game::startGame(){
+  gameWindow = SDL_CreateWindow(gameTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screenWidth, screenHeight, SDL_WINDOW_SHOWN);
   if (gameWindow == nullptr){
     cout << "Failed to create window." << endl;
     return false;

@@ -1,11 +1,18 @@
 #ifndef TILELAYER_H
 #define TILELAYER_H
 
+#include <vector>
+#include "Layer.h"
+#include "Level.h"
+#include "Vector2D.h"
+
+using namespace std;
+
 class TileLayer : public Layer {
 
   public:
-    TileLayer(int, int int, vector<Tileset>&);
-    virtual ~TileLayer(){};
+    TileLayer(int, int, int, vector<Tileset>&);
+    virtual ~TileLayer(){}
     virtual void update(Level*){};
     virtual void render();
     Tileset getTilesetByID(int);
@@ -32,7 +39,7 @@ class TileLayer : public Layer {
     Vector2D velocity;
     Vector2D acceleration;
     const vector<Tileset>& tilesets;
-    const vector<vector<int>> tileIDs; 
+    const vector<vector<int>> tileIDs;
 
 };
 

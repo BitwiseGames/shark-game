@@ -8,10 +8,10 @@ class MenuButton : public GameObject {
     void render();
   private:
     void (*callback)();
-  
+
 };
 
-class ButtonCreator : public BaseCreator {
+class MenuButtonCreator : public BaseCreator {
   GameObject* createGameObject() const {
     return new MenuButton();
   }

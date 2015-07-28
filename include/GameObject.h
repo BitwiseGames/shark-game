@@ -1,20 +1,38 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
+#include <string>
+#include <vector>
+#include "Vector2D.h"
+
+using namespace std;
+
 class GameObject {
   public:
     virtual void update();
     virtual void render();
 
-    virtual void load(int x, int y, int w, int h, int frames, int cID, int health, string tID){
+    virtual void load(int x, int y, int w, int h, int frames, int cID, int _health, int speed, string tID){
         position.setX(x);
         position.setY(y);
         width = w;
         height = h;
         numFrames = frames;
         callbackID = cID;
+        health = _health;
+        animSpeed = speed;
         textureID = tID;
     }
+
+    virtual void setHealth(int newHealth){
+      health = newHealth;
+      if (health <= 0){
+        dying = true;
+      }
+    }
+
+    void setCollisionLayers(vector<Tilelayer*>* cLayers)
+    { collisionLayers = cLayers; };
 
     int Width()
     { return width; };
@@ -26,15 +44,8 @@ class GameObject {
     { return dying; };
     bool Dead()
     { return dead; };
-    Vector2D& Position()
-    { return position; };
-
-    virtual void setHealth(int newHealth){
-      health = newHealth;
-      if (health <= 0){
-        dying = true;
-      }
-    }
+    Vector2D* Position()
+    { return &position; };
 
   protected:
     int width;
@@ -47,6 +58,7 @@ class GameObject {
     bool dying = false;
     bool dead = false;
     Vector2D position = Vector2D(0,0);
+    vector<TileLayer*>* collisionLayers;
 };
 
 #endif

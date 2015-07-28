@@ -1,6 +1,6 @@
 #include "Camera.h"
 
-Camera::Camera* theInstance = nullptr;
+Camera* Camera::theInstance = nullptr;
 
 Camera* Camera::getTheInstance(){
   if (theInstance == nullptr){
@@ -10,7 +10,7 @@ Camera* Camera::getTheInstance(){
 }
 
 void Camera::update(){
-  
+
 }
 
 Vector2D Camera::getPosition(){
@@ -23,7 +23,7 @@ Vector2D Camera::getPosition(){
     if (y < 0){
       y = 0;
     }
-    Vector2D pos = (x,y);
+    Vector2D pos = Vector2D(x,y);
     return pos;
   }
   return position;

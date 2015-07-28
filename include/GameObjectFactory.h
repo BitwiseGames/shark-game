@@ -3,20 +3,22 @@
 
 #include <string>
 #include <map>
+#include <iostream>
+#include "GameObject.h"
 
 using namespace std;
 
 class BaseCreator {
   public:
-    GameObject* createGameObject() const = 0;
+    GameObject* createGameObject();
     virtual ~BaseCreator(){};
 };
 
 class GameObjectFactory {
 
   public:
-    GameObjectFactory* getTheInstance();
-    bool registerType(string, BaseCreator*)
+    static GameObjectFactory* getTheInstance();
+    bool registerType(string, BaseCreator*);
     GameObject* create(string);
   private:
     GameObjectFactory(){};

@@ -1,6 +1,13 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <string>
+#include <iostream>
+#include "SDL.h"
+#include "GameStateHandler.h"
+
+using namespace std;
+
 class Game {
   public:
 
@@ -28,7 +35,7 @@ class Game {
     { return stateHandler; };
 
   private:
-    Game();
+    Game(){};
     static Game* theInstance;
     bool gameRunning;
     int screenHeight = 600;
