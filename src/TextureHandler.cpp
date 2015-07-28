@@ -1,4 +1,6 @@
 #include "TextureHandler.h"
+#include "SDL.h"
+#include "SDL_image.h"
 
 TextureHandler* TextureHandler::theInstance = nullptr;
 
@@ -61,7 +63,7 @@ void TextureHandler::renderFrame(string ID, int x, int y, int width, int height,
 
 }
 
-void TextureHandler::renderTile(string Id, int margin, int spacing, int x, int y, int width, int height, int curRow, int curFrame, SDL_Renderer* renderer){
+void TextureHandler::renderTile(string ID, int margin, int spacing, int x, int y, int width, int height, int curRow, int curFrame, SDL_Renderer* renderer){
 
     SDL_Rect srcRect;
     SDL_Rect dstRect;

@@ -7,22 +7,15 @@
 
 using namespace std;
 
+class Camera;
+class TextureHandler;
 class GameObject {
   public:
-    virtual void update();
-    virtual void render();
 
-    virtual void load(int x, int y, int w, int h, int frames, int cID, int _health, int speed, string tID){
-        position.setX(x);
-        position.setY(y);
-        width = w;
-        height = h;
-        numFrames = frames;
-        callbackID = cID;
-        health = _health;
-        animSpeed = speed;
-        textureID = tID;
-    }
+    virtual void update(){}; // this gets overridden
+    virtual void render();   // this gets overridden, but only sometimes
+
+    virtual void load(int, int, int, int, int, int, int, int, string);
 
     virtual void setHealth(int newHealth){
       health = newHealth;

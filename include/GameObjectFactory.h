@@ -10,7 +10,7 @@ using namespace std;
 
 class BaseCreator {
   public:
-    GameObject* createGameObject();
+    virtual GameObject* createGameObject() const = 0;
     virtual ~BaseCreator(){};
 };
 

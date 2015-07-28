@@ -1,4 +1,7 @@
 #include "PlayState.h"
+#include "Level.h"
+
+const string PlayState::playID = "PLAY";
 
 void PlayState::update(){
   level->update();

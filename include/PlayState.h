@@ -8,6 +8,7 @@
 using namespace std;
 
 class Level;
+class GameObject;
 class PlayState : public GameState {
 
   public:

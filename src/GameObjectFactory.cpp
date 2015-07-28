@@ -1,4 +1,5 @@
 #include "GameObjectFactory.h"
+
 GameObjectFactory* GameObjectFactory::theInstance = nullptr;
 
 GameObjectFactory* GameObjectFactory::getTheInstance(){

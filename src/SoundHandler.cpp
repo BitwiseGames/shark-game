@@ -1,6 +1,6 @@
 #include "SoundHandler.h"
 
-SoundHandler::SoundHandler* theInstance = nullptr;
+SoundHandler* SoundHandler::theInstance = nullptr;
 
 SoundHandler* SoundHandler::getTheInstance(){
   if (theInstance == nullptr){
