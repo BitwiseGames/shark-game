@@ -15,7 +15,7 @@ class Vector2D{
     void setX(float newX)
     { x = newX; };
     void setY(float newY)
-    { x = newY; };
+    { y = newY; };
 
     float X()
     { return x; };

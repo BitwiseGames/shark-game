@@ -25,6 +25,7 @@ class MainMenuState : public MenuState {
  private:
   static void quitGame(); // button callbacks
   static void startGame();
+  void setCallbacks();
   vector<GameObject*> gameObjects;
   static const string menuID;
 

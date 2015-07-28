@@ -53,8 +53,3 @@ void Game::quitGame(){
   delete renderer;
   gameRunning = false;
 }
-
-
-
-
-

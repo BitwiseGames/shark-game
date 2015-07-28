@@ -4,15 +4,16 @@
 const string PlayState::playID = "PLAY";
 
 void PlayState::update(){
-  level->update();
+    level->update();
 }
 void PlayState::render(){
-  level->render();
+    level->render();
 }
 
 bool PlayState::onEnter(){
-  return true;
+    cout << "Entering play." << endl;
+    return true;
 }
 bool PlayState::onExit(){
-  return true;
+    return true;
 }

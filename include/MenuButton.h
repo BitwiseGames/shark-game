@@ -11,6 +11,8 @@ class MenuButton : public GameObject {
     ~MenuButton(){};
     void update();
     void render();
+    void setCallback(void(*callBack)()) { callback = callBack;};
+    int getCallbackID() { return callbackID; };
   private:
     void (*callback)();
     bool mouseButtonDown;

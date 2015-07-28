@@ -5,8 +5,8 @@
 #include "ObjectLayer.h"
 #include "TileLayer.h"
 #include "GameObjectFactory.h"
-#include "zlib.h"
 #include "base64.h"
+#include "zlib.h"
 #include "Level.h"
 
 Level* LevelParser::parseLevel(const char* levelFile){
