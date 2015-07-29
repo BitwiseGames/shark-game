@@ -1,6 +1,7 @@
 #include "PauseState.h"
 #include "Game.h"
 #include "StateParser.h"
+#include "MainMenuState.h"
 #include "TextureHandler.h"
 #include "MenuButton.h"
 #include "InputHandler.h"
@@ -19,6 +20,7 @@ void PauseState::render(){
         gameObjects[i]->render();
     }
 
+
 }
 
 bool PauseState::onEnter(){
@@ -31,6 +33,7 @@ bool PauseState::onEnter(){
     callbacks.push_back(0);
     callbacks.push_back(quitGame);
     callbacks.push_back(resumeGame);
+    callbacks.push_back(gotoMainMenu);
     setCallbacks();
 
     return true;
@@ -64,4 +67,9 @@ void PauseState::quitGame(){
 
 void PauseState::resumeGame(){
     Game::getTheInstance()->getStateHandler()->popState();
+}
+
+void PauseState::gotoMainMenu(){
+    Game::getTheInstance()->getStateHandler()->popState(); // close pause state
+    Game::getTheInstance()->getStateHandler()->changeState(new MainMenuState());
 }

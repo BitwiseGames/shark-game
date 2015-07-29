@@ -19,4 +19,16 @@
             <object type="Player" x="100" y="100" width="64" height="32" textureID="player" numFrames="0" callbackID="0"/>
         </OBJECTS>
     </PLAY>
+    <PAUSE>
+        <TEXTURES>
+            <texture filename="Art/quit_button.png" ID="quitbutton"/>
+            <texture filename="Art/resume_button.png" ID="resumebutton"/>
+            <texture filename="Art/main_menu_button.png" ID="mainmenubutton"/>
+        </TEXTURES>
+        <OBJECTS>
+            <object type="MenuButton" x="100" y="200" width="179" height="67" textureID="quitbutton" numFrames="0" callbackID="1"/>
+            <object type="MenuButton" x="100" y="300" width="294" height="60" textureID="resumebutton" numFrames="0" callbackID="2"/>
+            <object type="MenuButton" x="100" y="400" width="455" height="58" textureID="mainmenubutton" numFrames="0" callbackID="3"/>
+        </OBJECTS>
+    </PAUSE>
 </States>

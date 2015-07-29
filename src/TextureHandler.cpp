@@ -54,6 +54,12 @@ void TextureHandler::renderTexture(string ID, int x, int y, int width, int heigh
 
 }
 
+void TextureHandler::renderScale(string ID, int x, int y, int width, int height, SDL_Rect srcRect, SDL_Rect dstRect, SDL_Renderer* renderer, SDL_RendererFlip flip){
+
+    SDL_RenderCopyEx(renderer, textureMap[ID], &srcRect, &dstRect, 0, 0, flip);
+
+}
+
 void TextureHandler::renderFrame(string ID, int x, int y, int width, int height, int curRow, int curFrame, SDL_Renderer* renderer, double angle, int alpha, SDL_RendererFlip flip){
 
     SDL_Rect srcRect;

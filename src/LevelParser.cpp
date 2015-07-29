@@ -74,7 +74,7 @@ void LevelParser::parseTilesets(TiXmlElement* tilesetRoot, vector<Tileset>* tile
     tilesets->push_back(tileset);
 }
 
-void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *layers, Level* level) {
+void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *layers, Level* level) {\
 
     ObjectLayer* objectLayer = new ObjectLayer();
 
@@ -102,13 +102,13 @@ void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *
                             else if(property->Attribute("name") == string("health")){
                                 property->Attribute("value", &health);
                             }
-                            else if(property->Attribute("name") == string("height")){
+                            else if(property->Attribute("name") == string("textureHeight")){
                                 property->Attribute("value", &height);
                             }
                             else if(property->Attribute("name") == string("textureID")){
                                 textureID = property->Attribute("value");
                             }
-                            else if(property->Attribute("name") == string("width")){
+                            else if(property->Attribute("name") == string("textureWidth")){
                                 property->Attribute("value", &width);
                             }
                             else if(property->Attribute("name") == string("callbackID")){
@@ -138,6 +138,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *
 
 
 void LevelParser::parseTileLayer(TiXmlElement* tileElement, vector<Layer*>* layers, vector<Tileset>* tilesets, vector<TileLayer*>* collisionLayers) {
+
     TileLayer* tileLayer = new TileLayer(tileSize, width, height, *tilesets);
     bool collidable = false;
 

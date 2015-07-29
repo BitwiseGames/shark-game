@@ -28,6 +28,7 @@ class PauseState : public MenuState {
         static const string pauseID;
         static void quitGame();
         static void resumeGame();
+        static void gotoMainMenu();
 };
 
 #endif

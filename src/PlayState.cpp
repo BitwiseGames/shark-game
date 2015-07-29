@@ -1,5 +1,6 @@
 #include "PlayState.h"
 #include "Level.h"
+#include "StateParser.h"
 #include "Game.h"
 #include "InputHandler.h"
 #include "LevelParser.h"

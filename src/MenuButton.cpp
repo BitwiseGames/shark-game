@@ -8,12 +8,13 @@ void MenuButton::update(){
     int mouseY = InputHandler::getTheInstance()->getMousePosition()->Y();
 
     if (mouseX > position.X() && mouseX < (position.X() + width) && mouseY > position.Y() && mouseY < (position.Y() + height)){
-        if (InputHandler::getTheInstance()->getMouseState(LEFT)){ // pressing the left mouse button
+        if (InputHandler::getTheInstance()->getMouseState(LEFT) && !mouseButtonDown){ // pressing the left mouse button
             currentFrame = MOUSE_CLICKED;
-            mouseButtonDown = true;
             callback();
+            mouseButtonDown = true;
         }
         else if (!InputHandler::getTheInstance()->getMouseState(LEFT)){
+            mouseButtonDown = false;
             currentFrame = MOUSE_OVER;
         }
     }

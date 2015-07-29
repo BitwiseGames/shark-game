@@ -7,13 +7,6 @@
 
 const string MainMenuState::menuID = "MENU";
 
-MainMenuState::~MainMenuState(){
-    for (int i = 0; i < gameObjects.size(); i++){
-        delete gameObjects[i];
-    }
-    gameObjects.clear();
-}
-
 void MainMenuState::update(){
     for (int i = 0; i < gameObjects.size(); i++){
         gameObjects[i]->update();
@@ -42,6 +35,10 @@ bool MainMenuState::onEnter(){
     return true;
 }
 bool MainMenuState::onExit(){
+    for (int i = 0; i < gameObjects.size(); i++){
+        delete gameObjects[i];
+    }
+    gameObjects.clear();
     InputHandler::getTheInstance()->reset();
     return true;
 }
