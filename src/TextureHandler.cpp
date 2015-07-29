@@ -32,6 +32,13 @@ bool TextureHandler::load(string filename, string ID, SDL_Renderer* renderer){
 
 }
 
+void TextureHandler::clearTextureMap(){
+    textureMap.clear();
+}
+void TextureHandler::removeFromTextureMap(string ID){
+    textureMap.erase(ID);
+}
+
 void TextureHandler::renderTexture(string ID, int x, int y, int width, int height, SDL_Renderer* renderer, SDL_RendererFlip flip){
 
     SDL_Rect srcRect;
@@ -77,15 +84,3 @@ void TextureHandler::renderTile(string ID, int margin, int spacing, int x, int y
     SDL_RenderCopyEx(renderer, textureMap[ID], &srcRect, &dstRect, 0, 0, SDL_FLIP_NONE);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-

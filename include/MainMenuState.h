@@ -12,7 +12,7 @@ class GameObject;
 
 class MainMenuState : public MenuState {
   public:
-   virtual ~MainMenuState(){};
+   virtual ~MainMenuState();
 
    void update();
    void render();

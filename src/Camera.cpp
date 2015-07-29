@@ -9,6 +9,11 @@ Camera* Camera::getTheInstance(){
   return theInstance;
 }
 
+Camera::Camera(){
+    position = Vector2D(0, 0);
+    target = nullptr;
+}
+
 void Camera::update(){
 
 }
@@ -26,5 +31,6 @@ Vector2D Camera::getPosition(){
     Vector2D pos = Vector2D(x,y);
     return pos;
   }
+
   return position;
 }

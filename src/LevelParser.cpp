@@ -18,9 +18,10 @@ Level* LevelParser::parseLevel(const char* levelFile){
 
     TiXmlElement* root = levelDoc.RootElement();
 
-    root->Attribute("tileSize", &tileSize);
+    root->Attribute("tilewidth", &tileSize);
     root->Attribute("width", &width);
     root->Attribute("height", &height);
+
     TiXmlElement* properties = root->FirstChildElement();
     // parse the textures needed for this level
     for(TiXmlElement* e = properties->FirstChildElement(); e != NULL; e = e->NextSiblingElement()){
@@ -138,7 +139,6 @@ void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *
 
 void LevelParser::parseTileLayer(TiXmlElement* tileElement, vector<Layer*>* layers, vector<Tileset>* tilesets, vector<TileLayer*>* collisionLayers) {
     TileLayer* tileLayer = new TileLayer(tileSize, width, height, *tilesets);
-
     bool collidable = false;
 
     // tile data

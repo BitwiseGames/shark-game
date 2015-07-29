@@ -1,5 +1,6 @@
 #include "TileLayer.h"
 #include "Camera.h"
+#include "TextureHandler.h"
 
 TileLayer::TileLayer(int ts, int mw, int mh, vector<Tileset>& Tilesets) : tileSize(ts), tilesets(Tilesets), position(0.0,0.0), velocity(0.0,0.0) {
   numColumns = mh;
@@ -8,8 +9,8 @@ TileLayer::TileLayer(int ts, int mw, int mh, vector<Tileset>& Tilesets) : tileSi
 }
 
 void TileLayer::render(){
-    cout << "TILELAYER RENDER" << endl;
   int x1, y1, x2, y2 = 0;
+
   x1 = position.X() / tileSize;
   y1 = position.Y() / tileSize;
   x2 = int(position.X()) % tileSize;
@@ -21,6 +22,7 @@ void TileLayer::render(){
       if (ID == 0){
         continue;
       }
+
       // if any of these are true, do not draw the tile
       bool tooFarLeft = ((j * tileSize) - x2) - Camera::getTheInstance()->getPosition().X() < -tileSize;
       bool tooFarRight = ((j * tileSize) - x2) - Camera::getTheInstance()->getPosition().X() < Game::getTheInstance()->getScreenWidth();
@@ -34,7 +36,12 @@ void TileLayer::render(){
       Tileset tileset = getTilesetByID(ID);
       ID--;
 
-      //TextureHandler::getTheInstance()->drawTile();
+      int drawX = ((j * tileSize) - x2) - Camera::getTheInstance()->getPosition().X();
+      int drawY = (i * tileSize) - y2;
+      int curRow = (ID - (tileset.firstGridID - 1)) / tileset.numColumns;
+      int curFrame = (ID - (tileset.firstGridID - 1)) % tileset.numColumns;
+
+      TextureHandler::getTheInstance()->renderTile(tileset.name, tileset.margin, tileset.spacing, drawX, drawY, tileSize, tileSize, curRow, curFrame, Game::getTheInstance()->getRenderer());
 
     }
   }

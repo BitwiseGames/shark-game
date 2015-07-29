@@ -19,9 +19,9 @@ class Camera {
     }
 
   private:
-    Camera(){};
+    Camera();
     static Camera* theInstance;
-    Vector2D position = Vector2D(0,0);
+    Vector2D position;
     GameObject* target; // the object that the camera follows, usually the player
 };
 

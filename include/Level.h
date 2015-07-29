@@ -1,13 +1,10 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
-#include <string>
-#include <vector>
 #include "Layer.h"
 #include "Player.h"
 #include "LevelParser.h"
 
-using namespace std;
 
 class TileLayer;
 
@@ -39,11 +36,11 @@ class Level {
     Player* getPlayer()
     { return player; };
     void setPlayer(Player* p)
-    { player = p; };
+    { player = p;};
 
   private:
     friend class LevelParser;
-    Level(){};
+    Level();
     Player* player;
     vector<Layer*> layers;
     vector<Tileset> tilesets;

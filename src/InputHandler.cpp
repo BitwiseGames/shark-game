@@ -11,8 +11,7 @@ InputHandler* InputHandler::getTheInstance(){
     return theInstance;
 }
 
-InputHandler::InputHandler(){
-    keyStates = NULL;
+InputHandler::InputHandler() : keyStates(0) {
     mousePosition = new Vector2D(0.0, 0.0);
     for (int i = 0; i < NUM_MOUSE_BUTTONS; i++){
         mouseButtonStates.push_back(false);
@@ -78,10 +77,12 @@ void InputHandler::update(){
 }
 
 bool InputHandler::getKey(SDL_Scancode key){
-    if (keyStates[key] == 1){
-        return true;
+    if (keyStates != nullptr){
+        if (keyStates[key] == 1){
+            return true;
+        }
+        return false;
     }
-    return false;
 }
 
 bool InputHandler::getMouseState(int mouseButton){

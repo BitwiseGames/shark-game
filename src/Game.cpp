@@ -42,7 +42,11 @@ void Game::update(){
   stateHandler->update();
 }
 void Game::render(){
-  stateHandler->render();
+    SDL_RenderClear(renderer);
+
+    stateHandler->render();
+
+    SDL_RenderPresent(renderer);
 }
 void Game::handleInput(){
     InputHandler::getTheInstance()->update();

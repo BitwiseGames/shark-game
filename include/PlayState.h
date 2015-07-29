@@ -25,6 +25,7 @@ class PlayState : public GameState {
     static const string playID;
     Level* level;
     vector<GameObject*> gameObjects;
+    void pauseGame();
 
 };
 

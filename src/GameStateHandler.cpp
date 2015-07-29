@@ -19,7 +19,6 @@ void GameStateHandler::changeState(GameState* state){
         return;
     }
     states.back()->onExit(); // delete the current state
-    delete states.back();
     states.pop_back();
   }
   state->onEnter();
