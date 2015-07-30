@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "InputHandler.h"
 #include "LevelParser.h"
+#include "BulletHandler.h"
 #include "PauseState.h"
 
 const string PlayState::playID = "PLAY";
@@ -13,9 +14,11 @@ void PlayState::update(){
     if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_ESCAPE)){
         pauseGame();
     }
+    BulletHandler::getTheInstance()->update();
 }
 void PlayState::render(){
     level->render();
+    BulletHandler::getTheInstance()->render();
 }
 
 bool PlayState::onEnter(){

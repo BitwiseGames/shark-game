@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Camera.h"
 #include "InputHandler.h"
+#include "BulletHandler.h"
 #include <cmath>
 
 #define pi 3.1415926535897932384626433832795
@@ -8,11 +9,14 @@
 Player::Player(){
     speed = MIN_SPEED;
     spaceKeyDown = false;
+    shotCoolDown = 0;
+    maxCoolDown = 15;
     Camera::getTheInstance()->setTarget(this);
 }
 
 void Player::update(){
 
+    // changing speeds
     if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_SPACE)){
         if (!spaceKeyDown){
             spaceKeyDown = true;
@@ -26,6 +30,16 @@ void Player::update(){
         spaceKeyDown = false;
     }
 
+    // shooting bullets
+    shotCoolDown--;
+    if (InputHandler::getTheInstance()->getMouseState(LEFT)){
+        if (shotCoolDown <= 0){
+            shotCoolDown = maxCoolDown;
+            BulletHandler::getTheInstance()->addPlayerBullet(position.X(), position.Y(), rotation);
+        }
+    }
+
+    // moving
     if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_A) || InputHandler::getTheInstance()->getKey(SDL_SCANCODE_LEFT)){
         rotation = 180;
         flip = SDL_FLIP_VERTICAL;
@@ -46,18 +60,26 @@ void Player::update(){
         if (rotation == 180){
             newX = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
             newY = 0;
+            collisionWidth = 64;
+            collisionHeight = 32;
         }
         else if (rotation == 0){
             newX = (Game::getTheInstance()->getDeltaTime() * speed);
             newY = 0;
+            collisionWidth = 64;
+            collisionHeight = 32;
         }
         else if (rotation == 90){
             newX = 0;
             newY = (Game::getTheInstance()->getDeltaTime() * speed);
+            collisionWidth = 32;
+            collisionHeight = 64;
         }
         else if (rotation == -90){
             newX = 0;
             newY = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
+            collisionWidth = 32;
+            collisionHeight = 64;
         }
 
     Vector2D newPos = Vector2D(position.X() + newX, position.Y() + newY);

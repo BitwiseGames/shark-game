@@ -48,6 +48,8 @@ class GameObject {
   protected:
     int width;
     int height;
+    int collisionWidth;
+    int collisionHeight;
     int numFrames;
     int animSpeed;
     int currentFrame;

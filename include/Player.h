@@ -18,6 +18,8 @@ class Player : public GameObject {
         const int MIN_SPEED = 200;
         const int SPEED_CHANGER = 2;
         const int MAX_SPEEDS = 4;
+        int shotCoolDown;
+        int maxCoolDown;
 };
 
 class PlayerCreator : public BaseCreator {

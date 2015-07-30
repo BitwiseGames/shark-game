@@ -1,4 +1,5 @@
 #include "ObjectLayer.h"
+#include "BulletHandler.h"
 
 ObjectLayer::~ObjectLayer(){
   for (vector<GameObject*>::iterator i = gameObjects.begin(); i != gameObjects.end(); i++){
