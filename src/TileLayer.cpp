@@ -25,9 +25,9 @@ void TileLayer::render(){
 
       // if any of these are true, do not draw the tile
       bool tooFarLeft = ((j * tileSize) - x2) - Camera::getTheInstance()->getPosition().X() < -tileSize;
-      bool tooFarRight = ((j * tileSize) - x2) - Camera::getTheInstance()->getPosition().X() < Game::getTheInstance()->getScreenWidth();
+      bool tooFarRight = ((j * tileSize) - x2) - Camera::getTheInstance()->getPosition().X() > Game::getTheInstance()->getScreenWidth();
       bool tooFarUp = ((i * tileSize) - y2) - Camera::getTheInstance()->getPosition().Y() < -tileSize;
-      bool tooFarDown = ((i * tileSize) - y2) - Camera::getTheInstance()->getPosition().Y() < Game::getTheInstance()->getScreenHeight();
+      bool tooFarDown = ((i * tileSize) - y2) - Camera::getTheInstance()->getPosition().Y() > Game::getTheInstance()->getScreenHeight();
 
       if (tooFarLeft || tooFarRight || tooFarUp || tooFarDown){
         continue;
@@ -37,7 +37,7 @@ void TileLayer::render(){
       ID--;
 
       int drawX = ((j * tileSize) - x2) - Camera::getTheInstance()->getPosition().X();
-      int drawY = (i * tileSize) - y2;
+      int drawY = ((i * tileSize) - y2) - Camera::getTheInstance()->getPosition().Y();
       int curRow = (ID - (tileset.firstGridID - 1)) / tileset.numColumns;
       int curFrame = (ID - (tileset.firstGridID - 1)) % tileset.numColumns;
 

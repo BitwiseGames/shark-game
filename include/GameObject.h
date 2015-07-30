@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "Vector2D.h"
+#include "SDL.h"
 
 using namespace std;
 
@@ -17,6 +18,7 @@ class GameObject {
     virtual void render();   // this gets overridden, but only sometimes
 
     virtual void load(int, int, int, int, int, int, int, int, string);
+    virtual bool tileCollisions(Vector2D);
 
     virtual void setHealth(int newHealth){
       health = newHealth;
@@ -52,6 +54,9 @@ class GameObject {
     int currentRow;
     int callbackID;
     int health;
+    int alpha = 255;
+    SDL_RendererFlip flip = SDL_FLIP_NONE;
+    float rotation = 0.0;
     string textureID;
     bool dying = false;
     bool dead = false;

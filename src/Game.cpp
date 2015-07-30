@@ -39,7 +39,12 @@ bool Game::startGame(){
 }
 
 void Game::update(){
-  stateHandler->update();
+
+    stateHandler->update();
+
+    float frameTime = SDL_GetTicks() - lastFrame;
+    lastFrame += frameTime;
+    deltaTime = frameTime / 1000.0;
 }
 void Game::render(){
     SDL_RenderClear(renderer);

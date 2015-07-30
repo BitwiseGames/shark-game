@@ -28,6 +28,7 @@ bool TextureHandler::load(string filename, string ID, SDL_Renderer* renderer){
     }
 
     textureMap[ID] = texture;
+
     return true;
 
 }
@@ -54,9 +55,10 @@ void TextureHandler::renderTexture(string ID, int x, int y, int width, int heigh
 
 }
 
-void TextureHandler::renderScale(string ID, int x, int y, int width, int height, SDL_Rect srcRect, SDL_Rect dstRect, SDL_Renderer* renderer, SDL_RendererFlip flip){
+void TextureHandler::renderScale(string ID, SDL_Rect srcRect, SDL_Rect dstRect, SDL_Renderer* renderer, double angle, int alpha, SDL_RendererFlip flip){
 
-    SDL_RenderCopyEx(renderer, textureMap[ID], &srcRect, &dstRect, 0, 0, flip);
+    SDL_SetTextureAlphaMod(textureMap[ID], alpha);
+    SDL_RenderCopyEx(renderer, textureMap[ID], &srcRect, &dstRect, angle, 0, flip);
 
 }
 
@@ -72,7 +74,7 @@ void TextureHandler::renderFrame(string ID, int x, int y, int width, int height,
     dstRect.y = y;
 
     SDL_SetTextureAlphaMod(textureMap[ID], alpha);
-    SDL_RenderCopyEx(renderer, textureMap[ID], &srcRect, &dstRect, 0, 0, flip);
+    SDL_RenderCopyEx(renderer, textureMap[ID], &srcRect, &dstRect, angle, nullptr, flip);
 
 }
 

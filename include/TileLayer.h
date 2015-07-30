@@ -15,6 +15,8 @@ class TileLayer : public Layer {
     virtual ~TileLayer(){}
     virtual void update(Level*){};
     virtual void render();
+    int getTileSize()
+    { return tileSize; };
     Tileset getTilesetByID(int);
     void setTileIDs(const vector<vector<int>>& IDs)
     { tileIDs = IDs; };

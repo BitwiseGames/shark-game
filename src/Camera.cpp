@@ -14,8 +14,9 @@ Camera::Camera(){
     target = nullptr;
 }
 
-void Camera::update(){
-
+void Camera::update(Vector2D pos){
+    position.setX( position.X() + pos.X() );
+    position.setY( position.Y() + pos.Y() );
 }
 
 Vector2D Camera::getPosition(){

@@ -4,11 +4,14 @@
   <property name="player" value="Art/player.png"/>
  </properties>
  <tileset firstgid="1" name="tile" tilewidth="64" tileheight="64" spacing="1" margin="1">
-  <image source="Art/tile.png" width="139" height="139"/>
+  <image source="Art/tile.png" width="131" height="131"/>
  </tileset>
  <layer name="Tile Layer 1" width="50" height="50">
+  <properties>
+   <property name="collidable" value="true"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJztWO0KxDAI297/pe/X4Ch1mhhdVxY4blAbTT9Eex7HcQ4/Fpm5WZzDNxOLYg2y3KMdEsvIr9Ixix3VEbWd2Vsc6JpaY9G5EVuEaxZXJk7PpxLe2s/uI3MW2Luggio3jpw74NOxNjJ5byXcxVqR36z8o+DNjGf9KfijOVyJqppGYcP4VfI+qaOb79OxFmd1XanOvUhvofBnxZDVp+JB/O2AXXR8eAfekuef8JnNWdb7AtorKGOI+LNskDgsHayWSH2N6GDf5WZ7igB9S0PqAe9cXf+KvYnGNfr17L2xaJ8V1WKtg6dltJ/ZKuKLwjrTd+sYuQdqHZl6XZ1TMsj2HSvUedH8tzreEGME1X1e1zp16OjUUtG/du/JzLeSaycd3Vqq70sXmFogMqeqjvLqPJQrA7YHY3shz0/F3P9xdR2vmsucR6aPRIH0M9k7pfLBzEW4VflNoYetExjfP8W1ATA=
+   eJztWMsOwyAMa7X//+dph2oV4uEkBgOtpWkHCHnWCZzHcZyb/FbH6Bg8NRcftQGTIRePFWO0os0/rGr3iz9KOUT4sCTLrgsvLyt5vaTT0+uu/138UOD1I79f6UdOt3cWVGInP1IbGLO5FYz+ker2fh+5M0fnKqKzJRf1xSqP7s/VQO+YW86fefadgUtYeP3gI8oJal/Q2aE393mAcPl9He1hubUaR1n4yxrXdF+0F6NyyHpqB/IOWLuDqXqyNf4tGdV8YZ0drDLofkvMo3XQ8+6Fvhe0ah3VFZ0dkbUaZ7Y4psZz0XkerRnkTuThfNSGll0WGUQ/mjsvomeW5Bici+pnnKWaw3rksxdK90jvN1NbG5GPXrWPrkcRtX1UnNn6WbZH3h0YsVfiyfZf8mqUbEDrUu0Dow6UPihmB+ZbJ/M7VNdSBOxe9gWGLwGC
   </data>
  </layer>
  <objectgroup name="Object Layer 1">

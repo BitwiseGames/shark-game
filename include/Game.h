@@ -23,6 +23,9 @@ class Game {
     bool isGameRunning()
     { return gameRunning; };
 
+    float getDeltaTime()
+    { return deltaTime; };
+
     int getScreenWidth()
     { return screenWidth; };
 
@@ -41,6 +44,8 @@ class Game {
     bool gameRunning;
     int screenHeight = 600;
     int screenWidth = 800;
+    float deltaTime;
+    float lastFrame;
     string gameTitle = "Shark Game";
     SDL_Renderer* renderer;
     SDL_Window* gameWindow;

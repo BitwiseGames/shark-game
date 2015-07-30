@@ -8,7 +8,7 @@
 class Camera {
   public:
 
-    void update();
+    void update(Vector2D);
 
     static Camera* getTheInstance();
 

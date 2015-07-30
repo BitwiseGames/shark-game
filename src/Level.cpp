@@ -1,4 +1,5 @@
 #include "Level.h"
+#include "Camera.h"
 
 Level::Level(){};
 
@@ -19,4 +20,5 @@ void Level::update(){
   for (int i = 0; i < layers.size(); i++){
     layers[i]->update(this);
   }
+  Camera::getTheInstance()->update(*player->Position());
 }
