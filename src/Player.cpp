@@ -6,11 +6,25 @@
 #define pi 3.1415926535897932384626433832795
 
 Player::Player(){
-    speed = 50.0;
+    speed = MIN_SPEED;
+    spaceKeyDown = false;
     Camera::getTheInstance()->setTarget(this);
 }
 
 void Player::update(){
+
+    if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_SPACE)){
+        if (!spaceKeyDown){
+            spaceKeyDown = true;
+            speed *= SPEED_CHANGER;
+            if (speed > (MIN_SPEED * SPEED_CHANGER * MAX_SPEEDS)){
+                speed = MIN_SPEED;
+            }
+        }
+    }
+    else {
+        spaceKeyDown = false;
+    }
 
     if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_A) || InputHandler::getTheInstance()->getKey(SDL_SCANCODE_LEFT)){
         rotation = 180;
@@ -29,29 +43,31 @@ void Player::update(){
 
     float newX, newY;
 
-    if (rotation == 180){
-        newX = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
-        newY = 0;
-    }
-    else if (rotation == 0){
-        newX = (Game::getTheInstance()->getDeltaTime() * speed);
-        newY = 0;
-    }
-    else if (rotation == 90){
-        newX = 0;
-        newY = (Game::getTheInstance()->getDeltaTime() * speed);
-    }
-    else if (rotation == -90){
-        newX = 0;
-        newY = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
-    }
+        if (rotation == 180){
+            newX = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
+            newY = 0;
+        }
+        else if (rotation == 0){
+            newX = (Game::getTheInstance()->getDeltaTime() * speed);
+            newY = 0;
+        }
+        else if (rotation == 90){
+            newX = 0;
+            newY = (Game::getTheInstance()->getDeltaTime() * speed);
+        }
+        else if (rotation == -90){
+            newX = 0;
+            newY = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
+        }
 
-    position.setX( position.X() + newX );
-    position.setY( position.Y() + newY );
-
+    Vector2D newPos = Vector2D(position.X() + newX, position.Y() + newY);
+    if (!tileCollisions(newPos)){
+        position.setX( position.X() + newX );
+        position.setY( position.Y() + newY );
+    }
 }
 
-void Player::render(){
+/*void Player::render(){
 
     int drawX, drawY;
     drawX = (position.X() - Camera::getTheInstance()->getPosition().X());
@@ -60,7 +76,7 @@ void Player::render(){
     SDL_Rect dstRect = {0, 0, 64, 32};
     TextureHandler::getTheInstance()->renderScale(textureID, srcRect, dstRect, Game::getTheInstance()->getRenderer(), rotation, alpha, flip);
 
-}
+}*/
 
 
 

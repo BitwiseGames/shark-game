@@ -25,7 +25,7 @@ void GameObject::load(int x, int y, int w, int h, int frames, int cID, int _heal
 }
 
 bool GameObject::tileCollisions(Vector2D pos){
-    for(vector<TileLayer*>::iterator i = collisionLayers->begin(); i != collisionLayers->end(); ++i){
+    for(vector<TileLayer*>::iterator i = collisionLayers->begin(); i != collisionLayers->end(); i++){
         TileLayer* tileLayer = (*i);
         vector<vector<int>> tiles = tileLayer->getTileIDs();
 
@@ -37,9 +37,9 @@ bool GameObject::tileCollisions(Vector2D pos){
         y = layerPos.Y() / tileLayer->getTileSize();
 
         Vector2D startPos = pos;
-        startPos.setX( startPos.X() + 15 );
-        startPos.setY( startPos.Y() + 20 );
-        Vector2D endPos(pos.X() + (width - 15), (pos.Y()) + height - 4);
+        startPos.setX( startPos.X());
+        startPos.setY( startPos.Y());
+        Vector2D endPos(pos.X() + (width), (pos.Y()) + height);
 
         for(int i = startPos.X(); i < endPos.X(); i++) {
             for(int j = startPos.Y(); j < endPos.Y(); j++) {
