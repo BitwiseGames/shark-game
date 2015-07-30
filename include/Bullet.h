@@ -5,8 +5,9 @@
 
 class Bullet : public GameObject {
     public:
-        Bullet(string, int, int, int, int, float, float);
+        Bullet(){};
         void update();
+        void load(int, int, int, int, float, float, string);
 
     private:
         float speed;

@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "InputHandler.h"
 #include "BulletHandler.h"
+#include "Tests.h"
 #include <cmath>
 
 #define pi 3.1415926535897932384626433832795
@@ -35,7 +36,14 @@ void Player::update(){
     if (InputHandler::getTheInstance()->getMouseState(LEFT)){
         if (shotCoolDown <= 0){
             shotCoolDown = maxCoolDown;
-            BulletHandler::getTheInstance()->addPlayerBullet(position.X(), position.Y(), rotation);
+            int mouseX = InputHandler::getTheInstance()->getMousePosition()->X();
+            int mouseY = InputHandler::getTheInstance()->getMousePosition()->Y();
+            int px = position.X() + (collisionWidth / 2) - Camera::getTheInstance()->getPosition().X();
+            int py = position.Y() + (collisionHeight / 2) - Camera::getTheInstance()->getPosition().Y();
+
+            float degrees = Tests::angleBetween(px,py,mouseX,mouseY);
+
+            BulletHandler::getTheInstance()->addPlayerBullet(position.X(), position.Y(),degrees);
         }
     }
 

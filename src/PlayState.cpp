@@ -24,6 +24,7 @@ void PlayState::render(){
 bool PlayState::onEnter(){
     LevelParser levelParser;
     level = levelParser.parseLevel("level_1.tmx");
+    BulletHandler::getTheInstance()->setCollisionLayers(level->getCollisionLayers());
     cout << "Entering playstate" << endl;
     return true;
 }

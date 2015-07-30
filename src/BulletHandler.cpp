@@ -1,4 +1,5 @@
 #include "BulletHandler.h"
+#include <iostream>
 
 BulletHandler* BulletHandler::theInstance = nullptr;
 
@@ -17,8 +18,15 @@ void BulletHandler::render(){
 }
 
 void BulletHandler::updatePlayerBullets(){
-    for (int i = 0; i < playerBullets.size(); i++){
-        playerBullets[i]->update();
+    for (vector<Bullet*>::iterator i = playerBullets.begin(); i != playerBullets.end();){
+        if ((*i)->Dead()){
+            delete *i;
+            i = playerBullets.erase(i);
+        }
+        else {
+            (*i)->update();
+            i++;
+        }
     }
 }
 void BulletHandler::renderPlayerBullets(){
@@ -28,6 +36,8 @@ void BulletHandler::renderPlayerBullets(){
 }
 
 void BulletHandler::addPlayerBullet(int x, int y, float rot){
-    Bullet* b = new Bullet("playerbullet", x, y, BULLET_SIZE, BULLET_SIZE, BULLET_SPEED, rot);
+    Bullet* b = new Bullet();
+    b->load(x, y, BULLET_SIZE, BULLET_SIZE, BULLET_SPEED, rot, "playerbullet");
+    b->setCollisionLayers(collisionLayers);
     playerBullets.push_back(b);
 }
