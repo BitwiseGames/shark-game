@@ -1,5 +1,5 @@
 #include "BulletHandler.h"
-#include <iostream>
+#include "SoundHandler.h"
 
 BulletHandler* BulletHandler::theInstance = nullptr;
 
@@ -36,6 +36,7 @@ void BulletHandler::renderPlayerBullets(){
 }
 
 void BulletHandler::addPlayerBullet(int x, int y, float rot){
+    SoundHandler::getTheInstance()->playSound("gunshot", 0);
     Bullet* b = new Bullet();
     b->load(x, y, BULLET_SIZE, BULLET_SIZE, BULLET_SPEED, rot, "playerbullet");
     b->setCollisionLayers(collisionLayers);

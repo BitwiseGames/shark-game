@@ -23,7 +23,7 @@ class BulletHandler{
         static BulletHandler* theInstance;
         vector<TileLayer*>* collisionLayers;
         vector<Bullet*> playerBullets;
-        const float BULLET_SPEED = 500.0f;
+        const float BULLET_SPEED = 2000.0f;
         const int BULLET_SIZE = 6;
 
         void updatePlayerBullets();
