@@ -3,8 +3,8 @@
 #include "TextureHandler.h"
 
 TileLayer::TileLayer(int ts, int mw, int mh, vector<Tileset>& Tilesets) : tileSize(ts), tilesets(Tilesets), position(0.0,0.0), velocity(0.0,0.0) {
-  numColumns = mh;
-  numRows = mw;
+  numColumns = mw;
+  numRows = mh;
   mapWidth = mw;
 }
 

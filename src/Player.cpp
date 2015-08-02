@@ -68,26 +68,26 @@ void Player::update(){
         if (rotation == 180){
             newX = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
             newY = 0;
-            collisionWidth = 64;
-            collisionHeight = 32;
+            collisionWidth = 60;
+            collisionHeight = 30;
         }
         else if (rotation == 0){
             newX = (Game::getTheInstance()->getDeltaTime() * speed);
             newY = 0;
-            collisionWidth = 64;
-            collisionHeight = 32;
+            collisionWidth = 60;
+            collisionHeight = 30;
         }
         else if (rotation == 90){
             newX = 0;
             newY = (Game::getTheInstance()->getDeltaTime() * speed);
-            collisionWidth = 32;
-            collisionHeight = 64;
+            collisionWidth = 30;
+            collisionHeight = 60;
         }
         else if (rotation == -90){
             newX = 0;
             newY = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
-            collisionWidth = 32;
-            collisionHeight = 64;
+            collisionWidth = 30;
+            collisionHeight = 60;
         }
 
     Vector2D newPos = Vector2D(position.X() + newX, position.Y() + newY);
