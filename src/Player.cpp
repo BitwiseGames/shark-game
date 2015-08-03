@@ -38,12 +38,14 @@ void Player::update(){
             shotCoolDown = maxCoolDown;
             int mouseX = InputHandler::getTheInstance()->getMousePosition()->X();
             int mouseY = InputHandler::getTheInstance()->getMousePosition()->Y();
-            int px = position.X() + (collisionWidth / 2) - Camera::getTheInstance()->getPosition().X();
-            int py = position.Y() + (collisionHeight / 2) - Camera::getTheInstance()->getPosition().Y();
+            float px = (position.X() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().X();
+            float py = (position.Y() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().Y();
 
             float degrees = Tests::angleBetween(px,py,mouseX,mouseY);
+            px += Camera::getTheInstance()->getPosition().X();
+            py += Camera::getTheInstance()->getPosition().Y();
 
-            BulletHandler::getTheInstance()->addPlayerBullet(position.X(), position.Y(),degrees);
+            BulletHandler::getTheInstance()->addPlayerBullet(px, py,degrees);
         }
     }
 
@@ -64,31 +66,30 @@ void Player::update(){
     }
 
     float newX, newY;
-
-        if (rotation == 180){
-            newX = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
-            newY = 0;
-            collisionWidth = 60;
-            collisionHeight = 30;
-        }
-        else if (rotation == 0){
-            newX = (Game::getTheInstance()->getDeltaTime() * speed);
-            newY = 0;
-            collisionWidth = 60;
-            collisionHeight = 30;
-        }
-        else if (rotation == 90){
-            newX = 0;
-            newY = (Game::getTheInstance()->getDeltaTime() * speed);
-            collisionWidth = 30;
-            collisionHeight = 60;
-        }
-        else if (rotation == -90){
-            newX = 0;
-            newY = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
-            collisionWidth = 30;
-            collisionHeight = 60;
-        }
+    if (rotation == 180){
+        newX = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
+        newY = 0;
+        collisionWidth = 60;
+        collisionHeight = 30;
+    }
+    else if (rotation == 0){
+        newX = (Game::getTheInstance()->getDeltaTime() * speed);
+        newY = 0;
+        collisionWidth = 60;
+        collisionHeight = 30;
+    }
+    else if (rotation == 90){
+        newX = 0;
+        newY = (Game::getTheInstance()->getDeltaTime() * speed);
+        collisionWidth = 30;
+        collisionHeight = 60;
+    }
+    else if (rotation == -90){
+        newX = 0;
+        newY = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
+        collisionWidth = 30;
+        collisionHeight = 60;
+    }
 
     Vector2D newPos = Vector2D(position.X() + newX, position.Y() + newY);
     if (!tileCollisions(newPos)){
@@ -96,17 +97,3 @@ void Player::update(){
         position.setY( position.Y() + newY );
     }
 }
-
-/*void Player::render(){
-
-    int drawX, drawY;
-    drawX = (position.X() - Camera::getTheInstance()->getPosition().X());
-    drawY = (position.Y() - Camera::getTheInstance()->getPosition().Y());
-    SDL_Rect srcRect = {0, 0, width, height};
-    SDL_Rect dstRect = {0, 0, 64, 32};
-    TextureHandler::getTheInstance()->renderScale(textureID, srcRect, dstRect, Game::getTheInstance()->getRenderer(), rotation, alpha, flip);
-
-}*/
-
-
-
