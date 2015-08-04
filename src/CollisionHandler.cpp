@@ -60,24 +60,15 @@ void CollisionHandler::playerEnemyCollisions(Player* player, vector<GameObject*>
         int pw = player->Width();
         int ph = player->Height();
 
-        // horizontal hit tests
-        if (py + ph > ey && py < ey + eh){
-            if (px + pw >= ex && px <= ex){
-                player->setPosition({object->Position()->X() - ew, player->Position()->Y()});
-            }
-            else if (px <= ex + ew && px >= ex){
-                player->setPosition({object->Position()->X() + ew, player->Position()->Y()});
-            }
-        }
-
-        //vertical hit tests
-        else if (px <= ex + ew && px + pw >= ex){
-            if (py + ph >= ey && py <= ey){
-                player->setPosition({player->Position()->X(), object->Position()->Y() - ew});
-            }
-            else if (py <= ey + eh && py >= ey){
-                player->setPosition({player->Position()->X(), object->Position()->Y() + eh});
-            }
+        // detect collision
+        // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+        if (ex < px + pw &&
+           ex + ew > px &&
+           ey < py + ph &&
+           eh + ey > py) {
+            // collision detected
+        } else {
+            // collision not detected
         }
     }
 }
