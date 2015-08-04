@@ -8,6 +8,12 @@ class Bullet : public GameObject {
         Bullet(){};
         void update();
         void load(int, int, int, int, float, float, string);
+        void setHealth(int newHealth){
+            health = newHealth;
+            if (health <= 0){
+                dead = true;
+            }
+        }
 
     private:
         float speed;

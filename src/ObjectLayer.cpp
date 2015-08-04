@@ -1,5 +1,7 @@
 #include "ObjectLayer.h"
 #include "BulletHandler.h"
+#include "CollisionHandler.h"
+#include "Level.h"
 
 ObjectLayer::~ObjectLayer(){
   for (vector<GameObject*>::iterator i = gameObjects.begin(); i != gameObjects.end(); i++){
@@ -21,10 +23,15 @@ void ObjectLayer::update(Level* level){
       }
     }
   }
+
+  CollisionHandler::getTheInstance()->update(level->getPlayer(), gameObjects);
+  BulletHandler::getTheInstance()->update();
+
 }
 
 void ObjectLayer::render(){
   for (int i = 0; i < gameObjects.size(); i++){
     gameObjects[i]->render();
   }
+  BulletHandler::getTheInstance()->render();
 }

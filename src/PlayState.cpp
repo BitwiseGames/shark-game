@@ -14,11 +14,9 @@ void PlayState::update(){
     if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_ESCAPE)){
         pauseGame();
     }
-    BulletHandler::getTheInstance()->update();
 }
 void PlayState::render(){
     level->render();
-    BulletHandler::getTheInstance()->render();
 }
 
 bool PlayState::onEnter(){

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="170" height="86" tilewidth="64" tileheight="64" nextobjectid="3">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="170" height="86" tilewidth="64" tileheight="64" nextobjectid="7">
  <properties>
+  <property name="brokenblock" value="Art/broken_block.png"/>
   <property name="player" value="Art/player.png"/>
  </properties>
  <tileset firstgid="1" name="tile" tilewidth="64" tileheight="64" spacing="1" margin="1">
@@ -12,6 +13,24 @@
     <property name="numFrames" value="0"/>
     <property name="textureHeight" value="32"/>
     <property name="textureID" value="player"/>
+    <property name="textureWidth" value="64"/>
+   </properties>
+  </object>
+  <object id="3" name="BrokenBlock" type="BrokenBlock" x="64" y="1408" width="64" height="64">
+   <properties>
+    <property name="health" value="3"/>
+    <property name="numFrames" value="0"/>
+    <property name="textureHeight" value="64"/>
+    <property name="textureID" value="brokenblock"/>
+    <property name="textureWidth" value="64"/>
+   </properties>
+  </object>
+  <object id="6" name="BrokenBlock" type="BrokenBlock" x="445" y="1209" width="64" height="64">
+   <properties>
+    <property name="health" value="3"/>
+    <property name="numFrames" value="0"/>
+    <property name="textureHeight" value="64"/>
+    <property name="textureID" value="brokenblock"/>
     <property name="textureWidth" value="64"/>
    </properties>
   </object>

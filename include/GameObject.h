@@ -44,6 +44,10 @@ class GameObject {
     { return &position; };
     string getTextureID()
     { return textureID; };
+    string Type()
+    { return type; };
+    void setPosition(Vector2D newPos)
+    { position = newPos;};
 
   protected:
     int width;
@@ -60,6 +64,7 @@ class GameObject {
     SDL_RendererFlip flip = SDL_FLIP_NONE;
     float rotation = 0.0;
     string textureID;
+    string type;
     bool dying = false;
     bool dead = false;
     Vector2D position = Vector2D(0,0);

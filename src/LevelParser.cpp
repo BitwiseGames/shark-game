@@ -74,7 +74,7 @@ void LevelParser::parseTilesets(TiXmlElement* tilesetRoot, vector<Tileset>* tile
     tilesets->push_back(tileset);
 }
 
-void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *layers, Level* level) {\
+void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *layers, Level* level) {
 
     ObjectLayer* objectLayer = new ObjectLayer();
 

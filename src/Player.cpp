@@ -13,6 +13,7 @@ Player::Player(){
     shotCoolDown = 0;
     maxCoolDown = 15;
     Camera::getTheInstance()->setTarget(this);
+    type = "Player";
 }
 
 void Player::update(){

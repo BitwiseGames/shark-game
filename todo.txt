@@ -1,0 +1,1 @@
+- Collision issues probably b/c checking next position based on current speed, use lowest speed instead

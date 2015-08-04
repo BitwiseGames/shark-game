@@ -18,6 +18,9 @@ class BulletHandler{
 
         void addPlayerBullet(int,int,float);
 
+        vector<Bullet*> getPlayerBullets()
+        { return playerBullets; };
+
     private:
         BulletHandler(){};
         static BulletHandler* theInstance;
