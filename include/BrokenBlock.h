@@ -9,6 +9,9 @@ class BrokenBlock : public Enemy{
         BrokenBlock(){};
         virtual ~BrokenBlock(){};
         void setHealth(int newHealth){ // no fancy dying animation or anything, just want it to go away
+            if (newHealth < health){ // got hurt
+                currentFrame++;
+            }
             health = newHealth;
             if (health <= 0){
                 dead = true;

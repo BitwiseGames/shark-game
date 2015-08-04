@@ -63,19 +63,18 @@ void CollisionHandler::playerEnemyCollisions(Player* player, vector<GameObject*>
         // horizontal hit tests
         if (py + ph > ey && py < ey + eh){
             if (px + pw >= ex && px <= ex){
-                player->setPosition({object->Position()->X() - ew, player->Position()->Y()});
+                player->setPosition({object->Position()->X() - pw, player->Position()->Y()});
             }
-            else if (px <= ex + ew && px >= ex){
+            else if (px <= ex + ew && px + pw >= ex){
                 player->setPosition({object->Position()->X() + ew, player->Position()->Y()});
             }
         }
-
         //vertical hit tests
         else if (px <= ex + ew && px + pw >= ex){
             if (py + ph >= ey && py <= ey){
-                player->setPosition({player->Position()->X(), object->Position()->Y() - ew});
+                player->setPosition({player->Position()->X(), object->Position()->Y() - ph});
             }
-            else if (py <= ey + eh && py >= ey){
+            else if (py <= ey + eh && py + ph >= ey + eh){
                 player->setPosition({player->Position()->X(), object->Position()->Y() + eh});
             }
         }

@@ -18,6 +18,10 @@ Player::Player(){
 
 void Player::update(){
 
+    //update animation
+    currentFrame = int(((SDL_GetTicks() / (1000 / animSpeed)) % numFrames));
+
+
     // changing speeds
     if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_SPACE)){
         if (!spaceKeyDown){

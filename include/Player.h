@@ -10,7 +10,6 @@ class Player : public GameObject {
     public:
         Player();
         void update();
-        //void render();
 
     private:
         float speed;

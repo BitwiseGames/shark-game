@@ -114,13 +114,14 @@ void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *
                             else if(property->Attribute("name") == string("callbackID")){
                                 property->Attribute("value", &callbackID);
                             }
-                            else if(e->Attribute("name") == string("animSpeed")){
+                            else if(property->Attribute("name") == string("animSpeed")){
                                 property->Attribute("value", &animSpeed);
                             }
                         }
                     }
                 }
             }
+
             // load the object
             gameObject->load(x, y, width, height, numFrames, callbackID, health, animSpeed, textureID);
             // set the collision layers
