@@ -8,6 +8,7 @@ class PufferFish : public Enemy {
     public:
         PufferFish();
         void update();
+        void load(int, int, int, int, int, int, int, int, string); // have to overload it b/c it's slightly different
         void setHealth(int newHealth){
             if (newHealth < health){ // hurt
                 blownUp = true;
@@ -24,6 +25,8 @@ class PufferFish : public Enemy {
         { return blownUp; };
 
     private:
+        int spawnY;
+        int birthTime;
         bool blownUp;
 };
 
