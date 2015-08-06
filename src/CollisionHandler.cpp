@@ -53,18 +53,22 @@ void CollisionHandler::playerEnemyCollisions(Player* player, vector<GameObject*>
 
         //vertical hit tests
         if (player->Position()->X() < object->Position()->X() + object->CollisionWidth() && player->Position()->X() + player->CollisionWidth() > object->Position()->X()){
+            //hitting the top
             if ( player->Position()->Y() + player->CollisionHeight() > object->Position()->Y() && player->Position()->Y() < object->Position()->Y()){
-                player->setPosition({player->Position()->X(), object->Position()->X() - player->CollisionHeight()});
+                player->setPosition({player->Position()->X(), object->Position()->Y() - player->CollisionHeight()});
             }
+            //hitting the bottom
             else if (player->Position()->Y() < object->Position()->Y() + object->CollisionHeight() && player->Position()->Y() + player->CollisionHeight() > object->Position()->Y() + object->CollisionHeight()){
                 player->setPosition({player->Position()->X(), object->Position()->Y() + object->CollisionHeight()});
             }
         }
         // horizontal hit tests
         if (player->Position()->Y() < object->Position()->Y() + object->CollisionHeight() && player->Position()->Y() + player->CollisionHeight() > object->Position()->Y()){
-            if ( player->Position()->X() + object->CollisionWidth() > ex && player->Position()->X() < object->Position()->X()){
-                player->setPosition({object->Position()->X() - player->CollisionWidth(), player->Position()->Y()});
+            //hitting the left side
+            if ( player->Position()->X() + object->CollisionWidth() > object->Position()->X() && player->Position()->X() < object->Position()->X()){
+                player->setPosition({object->Position()->X() - player->Width(), player->Position()->Y()});
             }
+            //hitting the right side
             else if ( player->Position()->X() < object->Position()->X() + object->CollisionWidth() && player->Position()->X() + player->CollisionWidth() > object->Position()->X()){
                 player->setPosition({object->Position()->X() + object->CollisionWidth(), player->Position()->Y()});
             }

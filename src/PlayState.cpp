@@ -25,6 +25,9 @@ bool PlayState::onEnter(){
     level = levelParser.parseLevel("level_1.tmx");
     /**YOU WILL GET A DIVISION BY ZERO AND THE PROGRAM WILL NOT LAUNCH**/
 
+    SDL_Color backgroundColor = {46, 116, 191, 255};
+    SDL_SetRenderDrawColor(Game::getTheInstance()->getRenderer(), backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
+
     BulletHandler::getTheInstance()->setCollisionLayers(level->getCollisionLayers());
     cout << "Entering playstate" << endl;
     return true;
