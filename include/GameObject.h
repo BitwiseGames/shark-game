@@ -34,6 +34,10 @@ class GameObject {
     { return width; };
     int Height()
     { return height; };
+    int CollisionWidth()
+    { return collisionWidth; };
+    int CollisionHeight()
+    { return collisionHeight; };
     int Health()
     { return health; };
     bool Dying()

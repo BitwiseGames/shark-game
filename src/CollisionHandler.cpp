@@ -51,31 +51,22 @@ void CollisionHandler::playerEnemyCollisions(Player* player, vector<GameObject*>
             continue;
         }
 
-        int ex = object->Position()->X() - Camera::getTheInstance()->getPosition().X();
-        int ey = object->Position()->Y() - Camera::getTheInstance()->getPosition().Y();
-        int ew = object->Width();
-        int eh = object->Height();
-        int px = player->Position()->X() - Camera::getTheInstance()->getPosition().X();
-        int py = player->Position()->Y() - Camera::getTheInstance()->getPosition().Y();
-        int pw = player->Width();
-        int ph = player->Height();
-
-        // horizontal hit tests
-        if (py + ph > ey && py < ey + eh){
-            if (px + pw >= ex && px <= ex){
-                player->setPosition({object->Position()->X() - pw, player->Position()->Y()});
+        //vertical hit tests
+        if (player->Position()->X() < object->Position()->X() + object->CollisionWidth() && player->Position()->X() + player->CollisionWidth() > object->Position()->X()){
+            if ( player->Position()->Y() + player->CollisionHeight() > object->Position()->Y() && player->Position()->Y() < object->Position()->Y()){
+                player->setPosition({player->Position()->X(), object->Position()->X() - player->CollisionHeight()});
             }
-            else if (px <= ex + ew && px + pw >= ex){
-                player->setPosition({object->Position()->X() + ew, player->Position()->Y()});
+            else if (player->Position()->Y() < object->Position()->Y() + object->CollisionHeight() && player->Position()->Y() + player->CollisionHeight() > object->Position()->Y() + object->CollisionHeight()){
+                player->setPosition({player->Position()->X(), object->Position()->Y() + object->CollisionHeight()});
             }
         }
-        //vertical hit tests
-        else if (px <= ex + ew && px + pw >= ex){
-            if (py + ph >= ey && py <= ey){
-                player->setPosition({player->Position()->X(), object->Position()->Y() - ph});
+        // horizontal hit tests
+        if (player->Position()->Y() < object->Position()->Y() + object->CollisionHeight() && player->Position()->Y() + player->CollisionHeight() > object->Position()->Y()){
+            if ( player->Position()->X() + object->CollisionWidth() > ex && player->Position()->X() < object->Position()->X()){
+                player->setPosition({object->Position()->X() - player->CollisionWidth(), player->Position()->Y()});
             }
-            else if (py <= ey + eh && py + ph >= ey + eh){
-                player->setPosition({player->Position()->X(), object->Position()->Y() + eh});
+            else if ( player->Position()->X() < object->Position()->X() + object->CollisionWidth() && player->Position()->X() + player->CollisionWidth() > object->Position()->X()){
+                player->setPosition({object->Position()->X() + object->CollisionWidth(), player->Position()->Y()});
             }
         }
     }

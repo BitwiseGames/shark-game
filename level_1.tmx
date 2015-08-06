@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="170" height="86" tilewidth="64" tileheight="64" nextobjectid="7">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="170" height="86" tilewidth="64" tileheight="64" nextobjectid="8">
  <properties>
   <property name="brokenblock" value="Art/broken_block.png"/>
-  <property name="player" value="Art/player.png"/>
+  <property name="player" value="Art/player_swim.png"/>
+  <property name="pufferfish" value="Art/1_puffer.png"/>
  </properties>
  <tileset firstgid="1" name="tile" tilewidth="64" tileheight="64" spacing="1" margin="1">
   <image source="Art/tile.png" width="131" height="131"/>
@@ -10,7 +11,8 @@
  <objectgroup name="Object Layer 1">
   <object id="1" name="Player" type="Player" x="197.636" y="1042.54" width="64" height="32">
    <properties>
-    <property name="numFrames" value="0"/>
+    <property name="animSpeed" value="24"/>
+    <property name="numFrames" value="15"/>
     <property name="textureHeight" value="32"/>
     <property name="textureID" value="player"/>
     <property name="textureWidth" value="64"/>
@@ -19,19 +21,29 @@
   <object id="3" name="BrokenBlock" type="BrokenBlock" x="64" y="1408" width="64" height="64">
    <properties>
     <property name="health" value="3"/>
-    <property name="numFrames" value="0"/>
+    <property name="numFrames" value="3"/>
     <property name="textureHeight" value="64"/>
     <property name="textureID" value="brokenblock"/>
     <property name="textureWidth" value="64"/>
    </properties>
   </object>
-  <object id="6" name="BrokenBlock" type="BrokenBlock" x="445" y="1209" width="64" height="64">
+  <object id="6" name="BrokenBlock" type="BrokenBlock" x="445" y="1216" width="64" height="64">
    <properties>
     <property name="health" value="3"/>
-    <property name="numFrames" value="0"/>
+    <property name="numFrames" value="3"/>
     <property name="textureHeight" value="64"/>
     <property name="textureID" value="brokenblock"/>
     <property name="textureWidth" value="64"/>
+   </properties>
+  </object>
+  <object id="7" name="PufferFish" type="PufferFish" x="2650.18" y="367.333" width="32" height="32">
+   <properties>
+    <property name="animSpeed" value="24"/>
+    <property name="health" value="3"/>
+    <property name="numFrames" value="7"/>
+    <property name="textureHeight" value="32"/>
+    <property name="textureID" value="pufferfish"/>
+    <property name="textureWidth" value="32"/>
    </properties>
   </object>
  </objectgroup>
