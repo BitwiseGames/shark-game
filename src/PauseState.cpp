@@ -3,7 +3,6 @@
 #include "StateParser.h"
 #include "MainMenuState.h"
 #include "TextureHandler.h"
-#include "MenuButton.h"
 #include "InputHandler.h"
 
 const string PauseState::pauseID = "PAUSE";
@@ -13,13 +12,14 @@ void PauseState::update(){
     for (int i = 0; i < gameObjects.size(); i++){
         gameObjects[i]->update();
     }
+    mainmenuButton->update();
 }
 void PauseState::render(){
 
     for (int i = 0; i < gameObjects.size(); i++){
         gameObjects[i]->render();
     }
-
+    mainmenuButton->render();
 
 }
 
@@ -57,6 +57,11 @@ void PauseState::setCallbacks(){
         if (dynamic_cast<MenuButton*> (gameObjects[i])){ // if the item we're looking at is a menubutton
             MenuButton* button = dynamic_cast<MenuButton*>(gameObjects[i]);
             button->setCallback(callbacks[button->getCallbackID()]);  // set the callback
+            if (button->getTextureID() == "mainmenubutton"){
+                mainmenuButton = button;
+                gameObjects.erase(gameObjects.begin() + i);
+                i--;
+            }
         }
     }
 }

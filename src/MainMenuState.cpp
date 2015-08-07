@@ -23,6 +23,8 @@ void MainMenuState::render(){
 
 bool MainMenuState::onEnter(){
 
+    cout << "Entering main menu." << endl;
+
     StateParser stateParser;
     stateParser.parseState("game.xml", menuID, &gameObjects, &textureIDList);
 
@@ -41,6 +43,7 @@ bool MainMenuState::onExit(){
         delete gameObjects[i];
     }
     gameObjects.clear();
+    delete startButton;
     InputHandler::getTheInstance()->reset();
     return true;
 }

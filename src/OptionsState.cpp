@@ -27,7 +27,7 @@ bool OptionsState::onEnter(){
 
     SDL_SetRenderDrawColor(Game::getTheInstance()->getRenderer(), 255, 255, 255, 255); // white background
 
-    GameObject* textField = new Textfield(100,100,"TEST","Fonts/arial.ttf");
+    GameObject* textField = new Textfield(100,100,"TEST","Assets/Fonts/arial.ttf");
     gameObjects.push_back(textField);
 
     callbacks.push_back(0);
