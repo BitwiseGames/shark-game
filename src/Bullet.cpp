@@ -27,5 +27,5 @@ void Bullet::load(int x, int y, int w, int h, float s, float rot, string ID){
     currentRow = 0;
     collisionWidth = width;
     collisionHeight = height;
-    TextureHandler::getTheInstance()->load("Art/player_bullet.png", textureID, Game::getTheInstance()->getRenderer());
+    TextureHandler::getTheInstance()->load("Assets/Art/player_bullet.png", textureID, Game::getTheInstance()->getRenderer());
 }

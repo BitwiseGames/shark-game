@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include "SDL.h"
+#include "SDL_ttf.h"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ class TextureHandler {
         void renderScale(string, SDL_Rect, SDL_Rect, SDL_Renderer*, double, int, SDL_RendererFlip = SDL_FLIP_NONE);
         void renderFrame(string, int, int, int, int, int, int, SDL_Renderer*, double = 0.0, int = 255, SDL_RendererFlip = SDL_FLIP_NONE);
         void renderTile(string, int, int, int, int, int, int, int, int, SDL_Renderer*);
+        void renderText(int, int,TTF_Font*, string, SDL_Color, SDL_Renderer*);
 
     private:
         TextureHandler(){};

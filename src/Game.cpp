@@ -31,7 +31,7 @@ bool Game::startGame(){
     cout << "Failed to create renderer." << endl;
     return false;
   }
-    SoundHandler::getTheInstance()->load("Audio/Sound Effects/gun shot 2.wav", "gunshot", SOUND_EFFECT);
+    SoundHandler::getTheInstance()->load("Assets/Audio/Sound Effects/gun shot 2.wav", "gunshot", SOUND_EFFECT);
 
   // anything that is not created at runtime (bullets, explosions, ect) must be created here
   GameObjectFactory::getTheInstance()->registerType("MenuButton", new MenuButtonCreator());

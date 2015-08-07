@@ -22,7 +22,7 @@ void PlayState::render(){
 bool PlayState::onEnter(){
     /**BE ABSOLUTELY SURE THAT MARGIN AND SPACING IN THE LEVEL FILE ARE NOT ZERO**/
     LevelParser levelParser;
-    level = levelParser.parseLevel("level_1.tmx");
+    level = levelParser.parseLevel("Assets/level_1.tmx");
     /**YOU WILL GET A DIVISION BY ZERO AND THE PROGRAM WILL NOT LAUNCH**/
 
     SDL_Color backgroundColor = {46, 116, 191, 255};

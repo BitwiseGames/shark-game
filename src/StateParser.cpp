@@ -7,7 +7,7 @@
 bool StateParser::parseState(const char* stateFile, string stateID, vector<GameObject*>* gameObjects, vector<string>* textureIDs){
   TiXmlDocument xmlDoc;
   if (!xmlDoc.LoadFile(stateFile)){
-    cout << xmlDoc.ErrorDesc() << endl;
+    cout << xmlDoc.ErrorDesc() << " " << stateFile << endl;
     return false;
   }
 

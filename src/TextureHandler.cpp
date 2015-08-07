@@ -92,3 +92,14 @@ void TextureHandler::renderTile(string ID, int margin, int spacing, int x, int y
     SDL_RenderCopyEx(renderer, textureMap[ID], &srcRect, &dstRect, 0, 0, SDL_FLIP_NONE);
 
 }
+
+void TextureHandler::renderText(int x, int y, TTF_Font* font, string text, SDL_Color fontColor, SDL_Renderer* renderer){
+    SDL_Surface* surface = TTF_RenderText_Solid(font, text.c_str(), fontColor);
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    int w = surface->w;
+    int h = surface->h;
+    SDL_Rect dstRect;
+    dstRect = {x, y, w, h};
+    SDL_FreeSurface(surface);
+    SDL_RenderCopy(renderer, texture, nullptr, &dstRect);
+}

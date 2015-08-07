@@ -1,6 +1,9 @@
 #include "OptionsState.h"
 #include "Game.h"
 #include "MenuButton.h"
+#include "TextureHandler.h"
+#include "Textfield.h"
+#include "InputHandler.h"
 #include "StateParser.h"
 
 const string OptionsState::optionsID = "OPTIONS";
@@ -24,6 +27,9 @@ bool OptionsState::onEnter(){
 
     SDL_SetRenderDrawColor(Game::getTheInstance()->getRenderer(), 255, 255, 255, 255); // white background
 
+    GameObject* textField = new Textfield(100,100,"TEST","Fonts/arial.ttf");
+    gameObjects.push_back(textField);
+
     callbacks.push_back(0);
     callbacks.push_back(closeOptions);
     setCallbacks();
@@ -32,6 +38,14 @@ bool OptionsState::onEnter(){
 }
 
 bool OptionsState::onExit(){
+    for (int i = 0; i < gameObjects.size(); i++){
+        delete gameObjects[i];
+    }
+    gameObjects.clear();
+    for (int i = 0; i < textureIDList.size(); i++){
+        TextureHandler::getTheInstance()->removeFromTextureMap(textureIDList[i]);
+    }
+    InputHandler::getTheInstance()->reset();
 }
 
 void OptionsState::setCallbacks(){

@@ -33,9 +33,7 @@ bool MainMenuState::onEnter(){
     callbacks.push_back(quitGame);
     callbacks.push_back(gotoOptions);
     setCallbacks();
-    for (int i = 0; i < gameObjects.size(); i++){
-        cout << gameObjects[i]->getTextureID() << endl;
-    }
+
     return true;
 }
 bool MainMenuState::onExit(){

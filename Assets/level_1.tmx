@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="170" height="86" tilewidth="64" tileheight="64" nextobjectid="167">
  <properties>
-  <property name="brokenblock" value="Art/broken_block.png"/>
-  <property name="goldenegg" value="Art/egg.png"/>
-  <property name="jellyfish" value="Art/jellyfish.png"/>
-  <property name="player" value="Art/player.png"/>
-  <property name="pufferfish" value="Art/1_puffer.png"/>
+  <property name="brokenblock" value="Assets/Art/broken_block.png"/>
+  <property name="goldenegg" value="Assets/Art/egg.png"/>
+  <property name="jellyfish" value="Assets/Art/jellyfish.png"/>
+  <property name="player" value="Assets/Art/player.png"/>
+  <property name="pufferfish" value="Assets/Art/1_puffer.png"/>
  </properties>
  <tileset firstgid="1" name="tile" tilewidth="64" tileheight="64" spacing="1" margin="1">
-  <image source="Art/tile.png" width="131" height="131"/>
+  <image source="Assets/Art/tile.png" width="131" height="131"/>
  </tileset>
  <objectgroup name="Object Layer 1">
   <object id="1" name="Player" type="Player" x="149.636" y="1042.54" width="64" height="32">
