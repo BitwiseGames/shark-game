@@ -10,6 +10,8 @@ class Player : public GameObject {
     public:
         Player();
         void update();
+        void setSpeed(int s)
+        { speed = s;};
 
     private:
         float speed;

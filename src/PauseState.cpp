@@ -66,6 +66,9 @@ void PauseState::quitGame(){
 }
 
 void PauseState::resumeGame(){
+    //reset color
+    SDL_Color backgroundColor = {46, 116, 191, 255};
+    SDL_SetRenderDrawColor(Game::getTheInstance()->getRenderer(), backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
     Game::getTheInstance()->getStateHandler()->popState();
 }
 

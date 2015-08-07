@@ -4,6 +4,9 @@
 #include "BrokenBlock.h"
 #include "Player.h"
 #include "PufferFish.h"
+#include "SardineSchool.h"
+#include "Jellyfish.h"
+#include "GoldenEgg.h"
 #include "MainMenuState.h"
 #include "InputHandler.h"
 #include "SoundHandler.h"
@@ -33,6 +36,8 @@ bool Game::startGame(){
   // anything that is not created at runtime (bullets, explosions, ect) must be created here
   GameObjectFactory::getTheInstance()->registerType("MenuButton", new MenuButtonCreator());
   GameObjectFactory::getTheInstance()->registerType("PufferFish", new PufferFishCreator());
+  GameObjectFactory::getTheInstance()->registerType("GoldenEgg", new GoldenEggCreator());
+  GameObjectFactory::getTheInstance()->registerType("Jellyfish", new JellyfishCreator());
   GameObjectFactory::getTheInstance()->registerType("BrokenBlock", new BrokenBlockCreator());
   GameObjectFactory::getTheInstance()->registerType("Player", new PlayerCreator());
 

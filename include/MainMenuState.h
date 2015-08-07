@@ -5,6 +5,7 @@
 #include <vector>
 #include "MenuState.h"
 #include "GameObject.h"
+#include "MenuButton.h"
 
 using namespace std;
 
@@ -25,8 +26,10 @@ class MainMenuState : public MenuState {
  private:
   static void quitGame(); // button callbacks
   static void startGame();
+  static void gotoOptions();
   void setCallbacks();
   vector<GameObject*> gameObjects;
+  MenuButton* startButton;
   static const string menuID;
 
 };

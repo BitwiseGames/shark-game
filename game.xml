@@ -4,21 +4,23 @@
         <TEXTURES>
             <texture filename="Art/quit_button.png" ID="quitbutton"/>
             <texture filename="Art/start_button.png" ID="startbutton"/>
+            <texture filename="Art/options_button.png" ID="optionsbutton"/>
         </TEXTURES>
         <OBJECTS>                                     <!-- width value = total image width / number of frames -->
                                                       <!-- in this case, image width is 537, and there are 3 frames -->
             <object type="MenuButton" x="100" y="200" width="179" height="67" textureID="quitbutton" numFrames="0" callbackID="2"/>
             <object type="MenuButton" x="100" y="100" width="179" height="48" textureID="startbutton" numFrames="0" callbackID="1"/>
+            <object type="MenuButton" x="100" y="300" width="332" height="60" textureID="optionsbutton" numFrames="0" callbackID="3"/>
         </OBJECTS>
     </MENU>
-    <PLAY>
+    <OPTIONS>
         <TEXTURES>
-            <texture filename="Art/player.png" ID="player"/>
+            <texture filename="Art/back_button.png" ID="backbutton"/>
         </TEXTURES>
         <OBJECTS>
-            <object type="Player" x="100" y="100" width="64" height="32" textureID="player" numFrames="0" callbackID="0"/>
+            <object type="MenuButton" x="50" y="50" width="79" height="24" textureID="backbutton" numFrames="0" callbackID="1"/>
         </OBJECTS>
-    </PLAY>
+    </OPTIONS>
     <PAUSE>
         <TEXTURES>
             <texture filename="Art/quit_button.png" ID="quitbutton"/>

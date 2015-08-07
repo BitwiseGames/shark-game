@@ -51,6 +51,7 @@ void CollisionHandler::playerEnemyCollisions(Player* player, vector<GameObject*>
             continue;
         }
 
+
         //vertical hit tests
         if (player->Position()->X() < object->Position()->X() + object->CollisionWidth() && player->Position()->X() + player->CollisionWidth() > object->Position()->X()){
             //hitting the top

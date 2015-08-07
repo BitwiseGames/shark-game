@@ -19,6 +19,7 @@ void GameStateHandler::changeState(GameState* state){
         return;
     }
     states.back()->onExit(); // delete the current state
+    delete states.back();
     states.pop_back();
   }
   state->onEnter();
@@ -28,6 +29,7 @@ void GameStateHandler::changeState(GameState* state){
 void GameStateHandler::popState(){
   if (!states.empty()){
     states.back()->onExit();
+    delete states.back();
     states.pop_back();
   }
 }

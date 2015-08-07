@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="170" height="86" tilewidth="64" tileheight="64" nextobjectid="21">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="170" height="86" tilewidth="64" tileheight="64" nextobjectid="167">
  <properties>
   <property name="brokenblock" value="Art/broken_block.png"/>
+  <property name="goldenegg" value="Art/egg.png"/>
+  <property name="jellyfish" value="Art/jellyfish.png"/>
   <property name="player" value="Art/player.png"/>
   <property name="pufferfish" value="Art/1_puffer.png"/>
  </properties>
@@ -9,7 +11,7 @@
   <image source="Art/tile.png" width="131" height="131"/>
  </tileset>
  <objectgroup name="Object Layer 1">
-  <object id="1" name="Player" type="Player" x="197.636" y="1042.54" width="64" height="32">
+  <object id="1" name="Player" type="Player" x="149.636" y="1042.54" width="64" height="32">
    <properties>
     <property name="animSpeed" value="24"/>
     <property name="numFrames" value="16"/>
@@ -167,6 +169,49 @@
     <property name="textureWidth" value="32"/>
    </properties>
   </object>
+  <object id="25" name="Jellyfish" type="Jellyfish" x="1152" y="960" width="64" height="128">
+   <properties>
+    <property name="textureHeight" value="128"/>
+    <property name="textureID" value="jellyfish"/>
+    <property name="textureWidth" value="64"/>
+   </properties>
+  </object>
+  <object id="162" name="BrokenBlock" type="BrokenBlock" x="4864" y="5248" width="64" height="64">
+   <properties>
+    <property name="health" value="3"/>
+    <property name="numFrames" value="3"/>
+    <property name="textureHeight" value="64"/>
+    <property name="textureID" value="brokenblock"/>
+    <property name="textureWidth" value="64"/>
+   </properties>
+  </object>
+  <object id="163" name="BrokenBlock" type="BrokenBlock" x="4864" y="5312" width="64" height="64">
+   <properties>
+    <property name="health" value="3"/>
+    <property name="numFrames" value="3"/>
+    <property name="textureHeight" value="64"/>
+    <property name="textureID" value="brokenblock"/>
+    <property name="textureWidth" value="64"/>
+   </properties>
+  </object>
+  <object id="164" name="BrokenBlock" type="BrokenBlock" x="4864" y="5376" width="64" height="64">
+   <properties>
+    <property name="health" value="3"/>
+    <property name="numFrames" value="3"/>
+    <property name="textureHeight" value="64"/>
+    <property name="textureID" value="brokenblock"/>
+    <property name="textureWidth" value="64"/>
+   </properties>
+  </object>
+  <object id="166" name="GoldenEgg" type="GoldenEgg" x="320" y="4246" width="24" height="32">
+   <properties>
+    <property name="animSpeed" value="24"/>
+    <property name="numFrames" value="21"/>
+    <property name="textureHeight" value="32"/>
+    <property name="textureID" value="goldenegg"/>
+    <property name="textureWidth" value="24"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Collide" width="170" height="86">
   <properties>
@@ -181,7 +226,7 @@
    <property name="collidable" value="false"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2FtOAzEQBVHY/6b5QBEkPNS2+3XbdaT5g0zbrkwIb294eG96TbSzxupz4OrfqfdsdDrv6sB7ltNOb9Gxhc7otIZnp1H7djqb9xqjOo38HXV0mjvLX69Hp/+j01p0aqPa6e65djtbOrWJ+Ez03r/JZ3LaaZdrZ+aT9Z3wfr3X152ITvfWd3Kf6P7VWOam0731WX/X+/X/E9W/t50Zu65FVUQfHu8v4DvlTmn7HpM6pVWsqOyUVoFPfI+CAjrtic/WZ3TaE50+o9OeLP/nj7g8Zo5Afz3Rad5r4y6RHdHpl5XnS8bzCfgNnUIBnUJBVqd0jBM8T6GATqFgQqc7/zOd8r6asAYLOs2/tyc6tf0sndJphimdVlm59y1NRfDutAKdzufZaRWVe1fv06vMszxtx6vTSnS6h07tPPal09kroVM7Oq1Dp3Z0WodO7ei0Dp3aZvPaFzrtj07rOrWsJeNZpYBOa8+eTm3olE4V0CmdKqBTOlUQef63YR/j0KnNyrOdffTH/tqwJ7Xo1IY9qUWnNuxJrapO1d4PSrPCj9q5q82LZ7vPYrUzp1NtJ50qoVNtld/BMu9Lp9pu6RTa6NSP+vyd0akf9fk7o1M/E9bw8NcaqtZW2ek0k/aNTueatGd0CgXdOgV+k9Vp5jOR99g80zo9uc/pjPyNEmdKpx5/y9JpX3T68zU8Zlj52YzLOkeFkzXc2KkC70472F1HxNroNA+dns8SRelcpjl9htMpMtApFNApVlR9j6JTvFo5Uzpdp9Bppxl3e8zs1OuedLqm04zdOo28J52u6TZj5Wf56ix0mqfbjJ06jTSt05Wz2jnf6s/W1bmmoNMZnU53c6dZOs2iatrzoeOMnWZR5dHp6WtEX9U6zaKKTuN1muVm1R3S6Wwf0pkJQA==
+   eJztl9tuw0AIBdv//+mqD1WbKtmwwHLbGclPsc0Bxk7y8QE/fBY9JqKZQfYeOOp76p0NT+cdFfDOYvX0Fiq6UBk8zcHT01Nzs2bz7vGUp6vP8BRPI7O8uh+ersHTXPBURldPd2rhaX9OfCd6z2/yTqyeVjl2+nx3jUc9ryya+04ET2XnWq7dub+Frp5KcuOp7Fzttd73X3HKf280GTWewmtOzMvj+ZrMbf160NnTrrvG030medpl311zTyPT0w4775gZ+sH/KOgAntaEuT6CpzVhro/gaU1W/3dOHh6ZT+CZD0/9wFP/e+MpfHNy93j6y877JeL9BL5M2Q2ezmbKbvB0NlN2E+XphFl1BE95n3Zgym7wdDZTdjPBU2muKnk9edbDxF7xNL62J3gqO7fCLPBUnqkrUzzNYqd29Hwq7MYLb08zwNN1vez9eODpaRZdalfzNHKXVne8PM0ET9f18NTel8dcsp+TquApnnYAT/G0A3iKpx3AU9k177J5zQVPnxPhnyULnsYg6SXTFTzF07+18VSXBU/jwFN9FjyNA0/1WfA0DjzVZ6mQqyPT5lipDzyVsfNunzLHSn1MnO8JbpxJJR/wVMaNM6nkA57KuHEmlXzI8rRK/1I6ZfWikqdZdOu9W14vpniqfRd363vCrjTgaS8m7ErD7Z6erH261k3g6bna4MeU2eKpHxXzT5stntqpmH/abPHUTsUetLN9dW5Wb5meTqPi3PAU/lNxZngKHZjiKcymuqeR70Sesbrgqb2ONSO/Ud5zu6cev2Xx9Dx42svT1f/FE4c0x2me1bP0cKOnHfD2NBqLp//7ONEbnsaBp/Z8p6i6lxvY/Z7GUzzNAE+hA3gKO0j3G1VXcu7qejzty85O8XSfDp5aM3r6o/Ux0lNNTTy1g6fne8NTO9GeWu8XCZ7WIdJTj/t15AZPd3al2a/mneH1nlmBp3gqvSbL0WngaQ54KufVPKY9+xUzdp9pFKt5eHga8V3Y+VmKyNxhppmOZczoBk93cneZafb+sj2c6qkke6eZamt9AVmsC8Q=
   </data>
  </layer>
 </map>

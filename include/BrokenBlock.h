@@ -17,8 +17,7 @@ class BrokenBlock : public Enemy{
                 dead = true;
             }
         }
-    protected:
-    private:
+
 };
 
 class BrokenBlockCreator : public BaseCreator {
