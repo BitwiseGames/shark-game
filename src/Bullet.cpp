@@ -26,6 +26,6 @@ void Bullet::load(int x, int y, int w, int h, float s, float rot, string ID){
     currentFrame = 0;
     currentRow = 0;
     collisionWidth = width;
-    collisionHeight = height;
-    TextureHandler::getTheInstance()->load("Assets/Art/player_bullet.png", textureID, Game::getTheInstance()->getRenderer());
+    collisionHeight = height;                           // textureID should be "playerbullet" or "enemybullet", ect so they load the right files
+    TextureHandler::getTheInstance()->load("Assets/Art/" + textureID + ".png", textureID, Game::getTheInstance()->getRenderer());
 }

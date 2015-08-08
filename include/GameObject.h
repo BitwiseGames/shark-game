@@ -20,6 +20,8 @@ class GameObject {
     virtual void load(int, int, int, int, int, int, int, int, string);
     virtual bool tileCollisions(Vector2D);
 
+    virtual void playerCollide(){}; // colliding with the player
+
     virtual void setHealth(int newHealth){
       health = newHealth;
       if (health <= 0){

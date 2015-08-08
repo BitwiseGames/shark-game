@@ -57,10 +57,12 @@ void CollisionHandler::playerEnemyCollisions(Player* player, vector<GameObject*>
             //hitting the top
             if ( player->Position()->Y() + player->CollisionHeight() > object->Position()->Y() && player->Position()->Y() < object->Position()->Y()){
                 player->setPosition({player->Position()->X(), object->Position()->Y() - player->CollisionHeight()});
+                object->playerCollide();
             }
             //hitting the bottom
             else if (player->Position()->Y() < object->Position()->Y() + object->CollisionHeight() && player->Position()->Y() + player->CollisionHeight() > object->Position()->Y() + object->CollisionHeight()){
                 player->setPosition({player->Position()->X(), object->Position()->Y() + object->CollisionHeight()});
+                object->playerCollide();
             }
         }
         // horizontal hit tests
@@ -68,10 +70,12 @@ void CollisionHandler::playerEnemyCollisions(Player* player, vector<GameObject*>
             //hitting the left side
             if ( player->Position()->X() + object->CollisionWidth() > object->Position()->X() && player->Position()->X() < object->Position()->X()){
                 player->setPosition({object->Position()->X() - player->Width(), player->Position()->Y()});
+                object->playerCollide();
             }
             //hitting the right side
             else if ( player->Position()->X() < object->Position()->X() + object->CollisionWidth() && player->Position()->X() + player->CollisionWidth() > object->Position()->X()){
                 player->setPosition({object->Position()->X() + object->CollisionWidth(), player->Position()->Y()});
+                object->playerCollide();
             }
         }
     }

@@ -4,7 +4,7 @@
 
 PufferFish::PufferFish(){
     blownUp = false;
-    birthTime = SDL_GetTicks();
+    birthTime = SDL_GetTicks() + rand() % 100; // rand so they're not moving totally in sync
 }
 
 void PufferFish::update(){
@@ -13,12 +13,7 @@ void PufferFish::update(){
     position.setY(spawnY + sin(timeDiff) * Game::getTheInstance()->getDeltaTime() * 100);
 
     if (health < 3){ // 3 = max health
-        if (currentFrame == numFrames-1){ // we've reached the end of the animation
-            blownUp = true;
-        }
-        else {
-            currentFrame = int(((SDL_GetTicks() / (1000 / animSpeed)) % numFrames));
-        }
+        blowUp();
     }
 
 
@@ -26,6 +21,10 @@ void PufferFish::update(){
         currentFrame = 0;
         dead = true;
     }
+}
+
+void PufferFish::playerCollide(){
+    blowUp();
 }
 
 void PufferFish::load(int x, int y, int w, int h, int frames, int cID, int _health, int speed, string tID){
@@ -43,4 +42,13 @@ void PufferFish::load(int x, int y, int w, int h, int frames, int cID, int _heal
     collisionWidth = width;
     collisionHeight = height;
     spawnY = y;
+}
+
+void PufferFish::blowUp(){
+    if (currentFrame == numFrames-1){ // we've reached the end of the animation
+        blownUp = true;
+    }
+    else {
+        currentFrame = int(((SDL_GetTicks() / (1000 / animSpeed)) % numFrames));
+    }
 }

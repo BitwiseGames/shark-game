@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "TextureHandler.h"
 #include "ObjectLayer.h"
+#include "CollisionHandler.h"
 #include "TileLayer.h"
 #include "GameObjectFactory.h"
 #include "base64.h"
@@ -129,6 +130,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* objectElement, vector<Layer*> *
 
             if(type == "Player"){
                level->setPlayer(dynamic_cast<Player*>(gameObject));
+               CollisionHandler::getTheInstance()->setPlayer(dynamic_cast<Player*>(gameObject));
             }
             objectLayer->getGameObjects()->push_back(gameObject);
         }

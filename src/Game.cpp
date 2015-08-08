@@ -4,7 +4,9 @@
 #include "BrokenBlock.h"
 #include "Player.h"
 #include "PufferFish.h"
+#include "PistolShrimp.h"
 #include "SardineSchool.h"
+#include "ElectricEel.h"
 #include "Jellyfish.h"
 #include "GoldenEgg.h"
 #include "MainMenuState.h"
@@ -34,11 +36,13 @@ bool Game::startGame(){
     SoundHandler::getTheInstance()->load("Assets/Audio/Sound Effects/gun shot 2.wav", "gunshot", SOUND_EFFECT);
 
   // anything that is not created at runtime (bullets, explosions, ect) must be created here
+  GameObjectFactory::getTheInstance()->registerType("PistolShrimp", new PistolShrimpCreator());
+  GameObjectFactory::getTheInstance()->registerType("ElectricEel", new ElectricEelCreator());
+  GameObjectFactory::getTheInstance()->registerType("BrokenBlock", new BrokenBlockCreator());
   GameObjectFactory::getTheInstance()->registerType("MenuButton", new MenuButtonCreator());
   GameObjectFactory::getTheInstance()->registerType("PufferFish", new PufferFishCreator());
   GameObjectFactory::getTheInstance()->registerType("GoldenEgg", new GoldenEggCreator());
   GameObjectFactory::getTheInstance()->registerType("Jellyfish", new JellyfishCreator());
-  GameObjectFactory::getTheInstance()->registerType("BrokenBlock", new BrokenBlockCreator());
   GameObjectFactory::getTheInstance()->registerType("Player", new PlayerCreator());
 
   stateHandler = new GameStateHandler();

@@ -8,6 +8,7 @@ class Enemy : public GameObject {
         Enemy(){ type = "Enemy"; };
 
     protected:
+        int viewDistance = 300;
 
     private:
 

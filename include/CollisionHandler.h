@@ -14,6 +14,8 @@ class CollisionHandler {
         static CollisionHandler* getTheInstance();
 
         void update(Player*, vector<GameObject*>);
+        void setPlayer(Player* p){ player = p;};
+        Player* getPlayer(){ return player; };
 
     private:
         CollisionHandler(){};
@@ -21,6 +23,8 @@ class CollisionHandler {
 
         void PlayerBulletEnemyCollisions(vector<GameObject*>);
         void playerEnemyCollisions(Player*, vector<GameObject*>);
+
+        Player* player;
 };
 
 #endif

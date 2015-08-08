@@ -9,6 +9,8 @@ class PufferFish : public Enemy {
         PufferFish();
         void update();
         void load(int, int, int, int, int, int, int, int, string); // have to overload it b/c it's slightly different
+        void playerCollide();
+        void blowUp();
         void setHealth(int newHealth){
             if (newHealth < health){ // hurt
                 blownUp = true;
