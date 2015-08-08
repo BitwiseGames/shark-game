@@ -5,6 +5,7 @@
 #include <iostream>
 #include "MenuState.h"
 #include "GameObject.h"
+#include "Textfield.h"
 
 using namespace std;
 
@@ -22,7 +23,19 @@ class OptionsState : public MenuState {
         static const string optionsID;
         vector<GameObject*> gameObjects;
         void setCallbacks();
+
+        static bool fullscreen;
+
+        static const int NUM_RESOLUTIONS;
+        static SDL_Point currentResolution;
+        static SDL_Point resolutions[4];
+        Textfield* curResolutionText;
+        static int curResolutionIndex;
+
         static void closeOptions();
+        static void increaseResolution();
+        static void decreaseResolution();
+        static void toggleFullscreen();
 };
 
 #endif

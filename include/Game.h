@@ -32,6 +32,12 @@ class Game {
     int getScreenHeight()
     { return screenHeight; };
 
+    void setScreenWidth(int);
+
+    void setScreenHeight(int);
+
+    void toggleFullscreen(bool);
+
     SDL_Renderer* getRenderer()
     { return renderer; };
 

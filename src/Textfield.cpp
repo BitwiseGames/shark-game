@@ -13,3 +13,7 @@ Textfield::Textfield(int x, int y, string Text, string fontFile, int fontSize, f
 void Textfield::render(){
     TextureHandler::getTheInstance()->renderText(position.X(), position.Y(), font, text, fontColor, Game::getTheInstance()->getRenderer());
 }
+
+void Textfield::changeText(string newText){
+    text = newText;
+}

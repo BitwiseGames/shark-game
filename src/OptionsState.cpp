@@ -5,13 +5,26 @@
 #include "Textfield.h"
 #include "InputHandler.h"
 #include "StateParser.h"
+#include <sstream>
 
 const string OptionsState::optionsID = "OPTIONS";
+bool OptionsState::fullscreen = false;
+SDL_Point OptionsState::currentResolution = {800,600};
+int OptionsState::curResolutionIndex = 0;
+const int OptionsState::NUM_RESOLUTIONS = 4;
+SDL_Point OptionsState::resolutions[] = {{800,600}, {1024,768}, {1280,720}, {1920,1080}};
 
 void OptionsState::update(){
     for (int i = 0; i < gameObjects.size(); i++){
         gameObjects[i]->update();
     }
+    int curResW = Game::getTheInstance()->getScreenWidth();
+    int curResH = Game::getTheInstance()->getScreenHeight();
+    string newText;
+    stringstream s;
+    s << curResW << "," << curResH;
+    newText = s.str();
+    curResolutionText->changeText(newText);
 }
 
 void OptionsState::render(){
@@ -27,11 +40,16 @@ bool OptionsState::onEnter(){
 
     SDL_SetRenderDrawColor(Game::getTheInstance()->getRenderer(), 255, 255, 255, 255); // white background
 
-    GameObject* textField = new Textfield(100,100,"TEST","Assets/Fonts/arial.ttf");
-    gameObjects.push_back(textField);
+    GameObject* resolutionText = new Textfield(100, 100, "RESOLUTION: ", "Assets/Fonts/arial.ttf", 48);
+    curResolutionText = new Textfield(525, 100, "res", "Assets/Fonts/arial.ttf", 48);
+    gameObjects.push_back(resolutionText);
+    gameObjects.push_back(curResolutionText);
 
     callbacks.push_back(0);
     callbacks.push_back(closeOptions);
+    callbacks.push_back(decreaseResolution);
+    callbacks.push_back(increaseResolution);
+    callbacks.push_back(toggleFullscreen);
     setCallbacks();
 
     return true;
@@ -59,4 +77,31 @@ void OptionsState::setCallbacks(){
 
 void OptionsState::closeOptions(){
     Game::getTheInstance()->getStateHandler()->popState();
+}
+
+void OptionsState::increaseResolution(){
+    curResolutionIndex++;
+    if (curResolutionIndex > NUM_RESOLUTIONS - 1){ // we're at the last option
+        curResolutionIndex = 0;
+    }
+    currentResolution.x = resolutions[curResolutionIndex].x;
+    currentResolution.y = resolutions[curResolutionIndex].y;
+    Game::getTheInstance()->setScreenWidth(currentResolution.x);
+    Game::getTheInstance()->setScreenHeight(currentResolution.y);
+}
+
+void OptionsState::decreaseResolution(){
+    curResolutionIndex--;
+    if (curResolutionIndex < 0){ // we're at the first option
+        curResolutionIndex = NUM_RESOLUTIONS - 1;
+    }
+    currentResolution.x = resolutions[curResolutionIndex].x;
+    currentResolution.y = resolutions[curResolutionIndex].y;
+    Game::getTheInstance()->setScreenWidth(currentResolution.x);
+    Game::getTheInstance()->setScreenHeight(currentResolution.y);
+}
+
+void OptionsState::toggleFullscreen(){
+    fullscreen = !fullscreen;
+    Game::getTheInstance()->toggleFullscreen(fullscreen);
 }

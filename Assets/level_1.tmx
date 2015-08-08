@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="170" height="86" tilewidth="64" tileheight="64" nextobjectid="167">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="170" height="86" tilewidth="64" tileheight="64" nextobjectid="173">
  <properties>
   <property name="brokenblock" value="Assets/Art/broken_block.png"/>
+  <property name="electriceel" value="Assets/Art/electric_eel.png"/>
   <property name="goldenegg" value="Assets/Art/egg.png"/>
   <property name="jellyfish" value="Assets/Art/jellyfish.png"/>
+  <property name="pistolshrimp" value="Assets/Art/pistol_shrimp.png"/>
   <property name="player" value="Assets/Art/player.png"/>
   <property name="pufferfish" value="Assets/Art/1_puffer.png"/>
  </properties>
@@ -203,13 +205,64 @@
     <property name="textureWidth" value="64"/>
    </properties>
   </object>
-  <object id="166" name="GoldenEgg" type="GoldenEgg" x="320" y="4246" width="24" height="32">
+  <object id="166" name="GoldenEgg" type="GoldenEgg" x="321.333" y="4255.33" width="24" height="32">
    <properties>
     <property name="animSpeed" value="24"/>
     <property name="numFrames" value="21"/>
     <property name="textureHeight" value="32"/>
     <property name="textureID" value="goldenegg"/>
     <property name="textureWidth" value="24"/>
+   </properties>
+  </object>
+  <object id="167" name="PufferFish" type="PufferFish" x="2776" y="1042" width="32" height="32">
+   <properties>
+    <property name="animSpeed" value="24"/>
+    <property name="health" value="3"/>
+    <property name="numFrames" value="7"/>
+    <property name="textureHeight" value="32"/>
+    <property name="textureID" value="pufferfish"/>
+    <property name="textureWidth" value="32"/>
+   </properties>
+  </object>
+  <object id="168" name="PufferFish" type="PufferFish" x="2524" y="1040" width="32" height="32">
+   <properties>
+    <property name="animSpeed" value="24"/>
+    <property name="health" value="3"/>
+    <property name="numFrames" value="7"/>
+    <property name="textureHeight" value="32"/>
+    <property name="textureID" value="pufferfish"/>
+    <property name="textureWidth" value="32"/>
+   </properties>
+  </object>
+  <object id="169" name="PufferFish" type="PufferFish" x="2908" y="1046" width="32" height="32">
+   <properties>
+    <property name="animSpeed" value="24"/>
+    <property name="health" value="3"/>
+    <property name="numFrames" value="7"/>
+    <property name="textureHeight" value="32"/>
+    <property name="textureID" value="pufferfish"/>
+    <property name="textureWidth" value="32"/>
+   </properties>
+  </object>
+  <object id="170" name="ElectricEel" type="ElectricEel" x="2228" y="1288" width="128" height="16">
+   <properties>
+    <property name="textureHeight" value="16"/>
+    <property name="textureID" value="electriceel"/>
+    <property name="textureWidth" value="128"/>
+   </properties>
+  </object>
+  <object id="171" name="PistolShrimp" type="PistolShrimp" x="257" y="4255" width="32" height="32">
+   <properties>
+    <property name="textureHeight" value="32"/>
+    <property name="textureID" value="pistolshrimp"/>
+    <property name="textureWidth" value="32"/>
+   </properties>
+  </object>
+  <object id="172" name="PistolShrimp" type="PistolShrimp" x="373.333" y="4256" width="32" height="32">
+   <properties>
+    <property name="textureHeight" value="32"/>
+    <property name="textureID" value="pistolshrimp"/>
+    <property name="textureWidth" value="32"/>
    </properties>
   </object>
  </objectgroup>

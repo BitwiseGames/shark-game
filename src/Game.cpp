@@ -71,6 +71,20 @@ void Game::handleInput(){
     InputHandler::getTheInstance()->update();
 }
 
+void Game::setScreenWidth(int w){
+    screenWidth = w;
+    SDL_SetWindowSize(gameWindow, screenWidth, screenHeight);
+}
+
+void Game::setScreenHeight(int h){
+    screenHeight = h;
+    SDL_SetWindowSize(gameWindow, screenWidth, screenHeight);
+}
+
+void Game::toggleFullscreen(bool f){
+    SDL_SetWindowFullscreen(gameWindow, f);
+}
+
 void Game::quitGame(){
   SDL_DestroyWindow(gameWindow);
   delete stateHandler;

@@ -8,6 +8,7 @@ class Textfield : public GameObject{
     public:
         Textfield(int, int, string, string, int = 12, float = 0.0, SDL_Color={0,0,0,255});
         void render();
+        void changeText(string);
 
     private:
         string text;
