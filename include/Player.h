@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "GameObjectFactory.h"
 #include "TextureHandler.h"
+#include "GameOverState.h"
 #include "Game.h"
 
 class Player : public GameObject {
@@ -12,6 +13,12 @@ class Player : public GameObject {
         void update();
         void setSpeed(int s)
         { speed = s;};
+        void setHealth(int h){
+            health = h;
+            if (health <= 0){
+                Game::getTheInstance()->getStateHandler()->changeState(new GameOverState);
+            }
+        }
 
     private:
         float speed;

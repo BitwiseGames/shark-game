@@ -28,7 +28,7 @@ class OptionsState : public MenuState {
 
         static const int NUM_RESOLUTIONS;
         static SDL_Point currentResolution;
-        static SDL_Point resolutions[4];
+        static SDL_Point resolutions[8];
         Textfield* curResolutionText;
         static int curResolutionIndex;
 

@@ -1,6 +1,8 @@
 #include "PufferFish.h"
-#include <cmath>
+#include "CollisionHandler.h"
+#include "Player.h"
 #include "Game.h"
+#include <cmath>
 
 PufferFish::PufferFish(){
     blownUp = false;
@@ -20,11 +22,15 @@ void PufferFish::update(){
     if (dying){
         currentFrame = 0;
         dead = true;
+        Game::getTheInstance()->setCurrentLevel(2); // we've finished the level, lets go to the next one
     }
 }
 
 void PufferFish::playerCollide(){
     blowUp();
+    if (blownUp){
+        CollisionHandler::getTheInstance()->getPlayer()->setHealth(0);
+    }
 }
 
 void PufferFish::load(int x, int y, int w, int h, int frames, int cID, int _health, int speed, string tID){

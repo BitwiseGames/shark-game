@@ -32,11 +32,16 @@ class Game {
     int getScreenHeight()
     { return screenHeight; };
 
+    int getCurrentLevel()
+    { return currentLevel; };
+
     void setScreenWidth(int);
 
     void setScreenHeight(int);
 
     void toggleFullscreen(bool);
+
+    void setCurrentLevel(int);
 
     SDL_Renderer* getRenderer()
     { return renderer; };
@@ -50,6 +55,8 @@ class Game {
     bool gameRunning;
     int screenHeight = 600;
     int screenWidth = 800;
+    int currentLevel = 1;
+    const int NUM_LEVELS = 9;
     float deltaTime;
     float lastFrame;
     string gameTitle = "Shark Game";

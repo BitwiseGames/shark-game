@@ -15,9 +15,6 @@ void GameStateHandler::pushState(GameState* state){
 
 void GameStateHandler::changeState(GameState* state){
   if (!states.empty()){
-    if (states.back()->getStateID() == state->getStateID()){ // if we're passing the current state through, somebody fucked up
-        return;
-    }
     states.back()->onExit(); // delete the current state
     delete states.back();
     states.pop_back();

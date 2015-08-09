@@ -10,6 +10,7 @@
 #include "Jellyfish.h"
 #include "GoldenEgg.h"
 #include "MainMenuState.h"
+#include "PlayState.h"
 #include "InputHandler.h"
 #include "SoundHandler.h"
 
@@ -83,6 +84,20 @@ void Game::setScreenHeight(int h){
 
 void Game::toggleFullscreen(bool f){
     SDL_SetWindowFullscreen(gameWindow, f);
+}
+
+void Game::setCurrentLevel(int l){
+    if (l > NUM_LEVELS || l < 1){
+        cout << "Level " << l << " does not exist, returning first level." << endl;
+        currentLevel = 1;
+        return;
+    }
+    if (l == currentLevel){
+        cout << "We're already on that level!" << endl;
+        return;
+    }
+    currentLevel = l;
+    stateHandler->changeState(new PlayState());
 }
 
 void Game::quitGame(){

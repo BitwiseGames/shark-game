@@ -11,8 +11,8 @@ const string OptionsState::optionsID = "OPTIONS";
 bool OptionsState::fullscreen = false;
 SDL_Point OptionsState::currentResolution = {800,600};
 int OptionsState::curResolutionIndex = 0;
-const int OptionsState::NUM_RESOLUTIONS = 4;
-SDL_Point OptionsState::resolutions[] = {{800,600}, {1024,768}, {1280,720}, {1920,1080}};
+const int OptionsState::NUM_RESOLUTIONS = 8;
+SDL_Point OptionsState::resolutions[] = {{800,600}, {1024,768}, {1280,720}, {1366,768}, {1440,900}, {1600,900}, {1600,1200}, {1920,1080}};
 
 void OptionsState::update(){
     for (int i = 0; i < gameObjects.size(); i++){

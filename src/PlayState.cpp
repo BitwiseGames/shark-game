@@ -6,6 +6,7 @@
 #include "LevelParser.h"
 #include "BulletHandler.h"
 #include "PauseState.h"
+#include <sstream>
 
 const string PlayState::playID = "PLAY";
 
@@ -22,7 +23,11 @@ void PlayState::render(){
 bool PlayState::onEnter(){
     /**BE ABSOLUTELY SURE THAT MARGIN AND SPACING IN THE LEVEL FILE ARE NOT ZERO**/
     LevelParser levelParser;
-    level = levelParser.parseLevel("Assets/level_1.tmx");
+    string levelFile = "Assets/level_";
+    stringstream s;
+    s << Game::getTheInstance()->getCurrentLevel() << ".tmx";
+    levelFile += s.str();
+    level = levelParser.parseLevel(levelFile.c_str());
     /**YOU WILL GET A DIVISION BY ZERO AND THE PROGRAM WILL NOT LAUNCH**/
 
     SDL_Color backgroundColor = {46, 116, 191, 255};

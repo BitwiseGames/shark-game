@@ -2,9 +2,9 @@
 <States>
     <MENU>
         <TEXTURES>
-            <texture filename="Art/quit_button.png" ID="quitbutton"/>
-            <texture filename="Art/start_button.png" ID="startbutton"/>
-            <texture filename="Art/options_button.png" ID="optionsbutton"/>
+            <texture filename="Assets/Art/quit_button.png" ID="quitbutton"/>
+            <texture filename="Assets/Art/start_button.png" ID="startbutton"/>
+            <texture filename="Assets/Art/options_button.png" ID="optionsbutton"/>
         </TEXTURES>
         <OBJECTS>                                     <!-- width value = total image width / number of frames -->
                                                       <!-- in this case, image width is 537, and there are 3 frames -->
@@ -15,17 +15,23 @@
     </MENU>
     <OPTIONS>
         <TEXTURES>
-            <texture filename="Art/back_button.png" ID="backbutton"/>
+            <texture filename="Assets/Art/back_button.png" ID="backbutton"/>
+            <texture filename="Assets/Art/left_arrow.png" ID="leftarrow"/>
+            <texture filename="Assets/Art/right_arrow.png" ID="rightarrow"/>
+            <texture filename="Assets/Art/checkbox.png" ID="checkbox"/>
         </TEXTURES>
         <OBJECTS>
             <object type="MenuButton" x="50" y="50" width="79" height="24" textureID="backbutton" numFrames="0" callbackID="1"/>
+            <object type="MenuButton" x="425" y="100" width="64" height="64" textureID="leftarrow" numFrames="0" callbackID="2"/>
+            <object type="MenuButton" x="725" y="100" width="64" height="64" textureID="rightarrow" numFrames="0" callbackID="3"/>
+            <object type="MenuButton" x="100" y="200" width="16" height="16" textureID="checkbox" numFrames="0" callbackID="4"/>
         </OBJECTS>
     </OPTIONS>
     <PAUSE>
         <TEXTURES>
-            <texture filename="Art/quit_button.png" ID="quitbutton"/>
-            <texture filename="Art/resume_button.png" ID="resumebutton"/>
-            <texture filename="Art/main_menu_button.png" ID="mainmenubutton"/>
+            <texture filename="Assets/Art/quit_button.png" ID="quitbutton"/>
+            <texture filename="Assets/Art/resume_button.png" ID="resumebutton"/>
+            <texture filename="Assets/Art/main_menu_button.png" ID="mainmenubutton"/>
         </TEXTURES>
         <OBJECTS>
             <object type="MenuButton" x="100" y="400" width="179" height="67" textureID="quitbutton" numFrames="0" callbackID="1"/>
@@ -33,4 +39,14 @@
             <object type="MenuButton" x="100" y="200" width="455" height="58" textureID="mainmenubutton" numFrames="0" callbackID="3"/>
         </OBJECTS>
     </PAUSE>
+    <GAMEOVER>
+        <TEXTURES>
+            <texture filename="Assets/Art/quit_button.png" ID="quitbutton"/>
+            <texture filename="Assets/Art/main_menu_button.png" ID="mainmenubutton"/>
+        </TEXTURES>
+        <OBJECTS>
+            <object type="MenuButton" x="100" y="300" width="179" height="67" textureID="quitbutton" numFrames="0" callbackID="1"/>
+            <object type="MenuButton" x="100" y="400" width="455" height="58" textureID="mainmenubutton" numFrames="0" callbackID="2"/>
+        </OBJECTS>
+    </GAMEOVER>
 </States>
