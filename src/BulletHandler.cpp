@@ -55,15 +55,21 @@ void BulletHandler::renderEnemyBullets(){
     }
 }
 
-void BulletHandler::addPlayerBullet(int x, int y, float rot){
-    SoundHandler::getTheInstance()->playSound("gunshot", 0);
+void BulletHandler::addPlayerBullet(int x, int y, float rot, string type){
     Bullet* b = new Bullet();
-    b->load(x, y, BULLET_SIZE, BULLET_SIZE, BULLET_SPEED, rot, "playerbullet");
+    if (type == "bullet"){
+        SoundHandler::getTheInstance()->playSound("gunshot", 0);
+        b->load(x, y, BULLET_SIZE, BULLET_SIZE, BULLET_SPEED, rot, "playerbullet");
+    }
+    else if (type == "energyball"){
+        SoundHandler::getTheInstance()->playSound("energyball", 0);
+        b->load(x, y, 64, 64, BULLET_SPEED, rot, "playerenergyball");
+    }
     b->setCollisionLayers(collisionLayers);
     playerBullets.push_back(b);
 }
 
-void BulletHandler::addEnemyBullet(int x, int y, float rot){
+void BulletHandler::addEnemyBullet(int x, int y, float rot, string type){
     SoundHandler::getTheInstance()->playSound("gunshot", 0);
     Bullet* b = new Bullet();
     b->load(x, y, BULLET_SIZE, BULLET_SIZE, BULLET_SPEED, rot, "enemybullet");

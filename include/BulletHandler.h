@@ -16,8 +16,8 @@ class BulletHandler{
         void setCollisionLayers(vector<TileLayer*>* cl)
         { collisionLayers = cl; };
 
-        void addPlayerBullet(int,int,float);
-        void addEnemyBullet(int,int,float);
+        void addPlayerBullet(int,int,float,string);
+        void addEnemyBullet(int,int,float,string);
 
         vector<Bullet*> getPlayerBullets()
         { return playerBullets; };

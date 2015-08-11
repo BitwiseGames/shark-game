@@ -18,7 +18,7 @@ void PistolShrimp::update(){
         if (shotCoolDown <= 0){
             shotCoolDown = maxCoolDown;
             float angle = Tests::angleBetween(position.X(), position.Y(), px, py);
-            BulletHandler::getTheInstance()->addEnemyBullet(position.X(), position.Y(), angle);
+            BulletHandler::getTheInstance()->addEnemyBullet(position.X(), position.Y(), angle, "bullet");
         }
     }
 }

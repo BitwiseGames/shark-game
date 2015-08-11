@@ -10,6 +10,8 @@
 Player::Player(){
     speed = MIN_SPEED;
     spaceKeyDown = false;
+    currentWeapon = "pistol";
+    laserCharge = 0;
     shotCoolDown = 0;
     maxCoolDown = 15;
     Camera::getTheInstance()->setTarget(this);
@@ -36,21 +38,57 @@ void Player::update(){
         spaceKeyDown = false;
     }
 
+    // switching weapons
+    if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_1)){ // ordinary gun
+        currentWeapon = "pistol";
+        maxCoolDown = 15;
+    }
+    else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_2)){ // machine gun
+        currentWeapon = "machinegun";
+        maxCoolDown = 5;
+    }
+    else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_3)){
+        currentWeapon = "laser";
+    }
+
     // shooting bullets
     shotCoolDown--;
-    if (InputHandler::getTheInstance()->getMouseState(LEFT)){
-        if (shotCoolDown <= 0){
-            shotCoolDown = maxCoolDown;
-            int mouseX = InputHandler::getTheInstance()->getMousePosition()->X();
-            int mouseY = InputHandler::getTheInstance()->getMousePosition()->Y();
-            float px = (position.X() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().X();
-            float py = (position.Y() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().Y();
+    if (currentWeapon == "machinegun" || currentWeapon == "pistol"){
+        if (InputHandler::getTheInstance()->getMouseState(LEFT)){
+            if (shotCoolDown <= 0){
+                shotCoolDown = maxCoolDown;
+                int mouseX = InputHandler::getTheInstance()->getMousePosition()->X();
+                int mouseY = InputHandler::getTheInstance()->getMousePosition()->Y();
+                float px = (position.X() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().X();
+                float py = (position.Y() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().Y();
 
-            float degrees = Tests::angleBetween(px,py,mouseX,mouseY);
-            px += Camera::getTheInstance()->getPosition().X();
-            py += Camera::getTheInstance()->getPosition().Y();
+                float degrees = Tests::angleBetween(px,py,mouseX,mouseY);
+                px += Camera::getTheInstance()->getPosition().X();
+                py += Camera::getTheInstance()->getPosition().Y();
 
-            BulletHandler::getTheInstance()->addPlayerBullet(px, py,degrees);
+                BulletHandler::getTheInstance()->addPlayerBullet(px, py,degrees,"bullet");
+            }
+        }
+    }
+    // shooting the laser
+    else if (currentWeapon == "laser"){
+        if (InputHandler::getTheInstance()->getMouseState(LEFT)){
+            laserCharge++;
+        }
+        else {
+            if (laserCharge > 0){
+                int mouseX = InputHandler::getTheInstance()->getMousePosition()->X();
+                int mouseY = InputHandler::getTheInstance()->getMousePosition()->Y();
+                float px = (position.X() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().X();
+                float py = (position.Y() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().Y();
+
+                float degrees = Tests::angleBetween(px,py,mouseX,mouseY);
+                px += Camera::getTheInstance()->getPosition().X();
+                py += Camera::getTheInstance()->getPosition().Y();
+
+                BulletHandler::getTheInstance()->addPlayerBullet(px, py, degrees, "energyball");
+                laserCharge = 0;
+            }
         }
     }
 
