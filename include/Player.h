@@ -30,6 +30,8 @@ class Player : public GameObject {
         int laserCharge;
         int shotCoolDown;
         int maxCoolDown;
+
+        void shoot(string);
 };
 
 class PlayerCreator : public BaseCreator {

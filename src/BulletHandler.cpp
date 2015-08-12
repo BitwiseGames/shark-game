@@ -55,7 +55,7 @@ void BulletHandler::renderEnemyBullets(){
     }
 }
 
-void BulletHandler::addPlayerBullet(int x, int y, float rot, string type){
+void BulletHandler::addPlayerBullet(int x, int y, float rot, string type, int energyBallSize){
     Bullet* b = new Bullet();
     if (type == "bullet"){
         SoundHandler::getTheInstance()->playSound("gunshot", 0);
@@ -64,6 +64,8 @@ void BulletHandler::addPlayerBullet(int x, int y, float rot, string type){
     else if (type == "energyball"){
         SoundHandler::getTheInstance()->playSound("energyball", 0);
         b->load(x, y, 64, 64, BULLET_SPEED, rot, "playerenergyball");
+        b->setDrawWidth(energyBallSize);
+        b->setDrawHeight(energyBallSize);
     }
     b->setCollisionLayers(collisionLayers);
     playerBullets.push_back(b);

@@ -57,16 +57,7 @@ void Player::update(){
         if (InputHandler::getTheInstance()->getMouseState(LEFT)){
             if (shotCoolDown <= 0){
                 shotCoolDown = maxCoolDown;
-                int mouseX = InputHandler::getTheInstance()->getMousePosition()->X();
-                int mouseY = InputHandler::getTheInstance()->getMousePosition()->Y();
-                float px = (position.X() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().X();
-                float py = (position.Y() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().Y();
-
-                float degrees = Tests::angleBetween(px,py,mouseX,mouseY);
-                px += Camera::getTheInstance()->getPosition().X();
-                py += Camera::getTheInstance()->getPosition().Y();
-
-                BulletHandler::getTheInstance()->addPlayerBullet(px, py,degrees,"bullet");
+                shoot("bullet");
             }
         }
     }
@@ -76,17 +67,8 @@ void Player::update(){
             laserCharge++;
         }
         else {
-            if (laserCharge > 0){
-                int mouseX = InputHandler::getTheInstance()->getMousePosition()->X();
-                int mouseY = InputHandler::getTheInstance()->getMousePosition()->Y();
-                float px = (position.X() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().X();
-                float py = (position.Y() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().Y();
-
-                float degrees = Tests::angleBetween(px,py,mouseX,mouseY);
-                px += Camera::getTheInstance()->getPosition().X();
-                py += Camera::getTheInstance()->getPosition().Y();
-
-                BulletHandler::getTheInstance()->addPlayerBullet(px, py, degrees, "energyball");
+            if (laserCharge > 0){ // we've charged, then let go, so shoot
+                shoot("energyball");
                 laserCharge = 0;
             }
         }
@@ -139,4 +121,17 @@ void Player::update(){
         position.setX( position.X() + newX );
         position.setY( position.Y() + newY );
     }
+}
+
+void Player::shoot(string type){
+    int mouseX = InputHandler::getTheInstance()->getMousePosition()->X();
+    int mouseY = InputHandler::getTheInstance()->getMousePosition()->Y();
+    float px = (position.X() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().X();
+    float py = (position.Y() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().Y();
+
+    float degrees = Tests::angleBetween(px,py,mouseX,mouseY);
+    px += Camera::getTheInstance()->getPosition().X();
+    py += Camera::getTheInstance()->getPosition().Y();
+
+    BulletHandler::getTheInstance()->addPlayerBullet(px, py, degrees, type, laserCharge);
 }
