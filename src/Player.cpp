@@ -48,7 +48,11 @@ void Player::update(){
         maxCoolDown = 5;
     }
     else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_3)){
-        currentWeapon = "laser";
+        currentWeapon = "energygun";
+    }
+    else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_4)){
+        currentWeapon = "rocketlauncher";
+        maxCoolDown = 60;
     }
 
     // shooting bullets
@@ -61,8 +65,8 @@ void Player::update(){
             }
         }
     }
-    // shooting the laser
-    else if (currentWeapon == "laser"){
+    // shooting the energy ball gun
+    else if (currentWeapon == "energygun"){
         if (InputHandler::getTheInstance()->getMouseState(LEFT)){
             laserCharge++;
         }
@@ -70,6 +74,15 @@ void Player::update(){
             if (laserCharge > 0){ // we've charged, then let go, so shoot
                 shoot("energyball");
                 laserCharge = 0;
+            }
+        }
+    }
+    // shooting rockets
+    else if (currentWeapon == "rocketlauncher"){
+        if (InputHandler::getTheInstance()->getMouseState(LEFT)){
+            if (shotCoolDown <= 0){
+                shotCoolDown = maxCoolDown;
+                shoot("rocket");
             }
         }
     }

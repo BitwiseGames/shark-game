@@ -36,6 +36,7 @@ bool Game::startGame(){
   }
     SoundHandler::getTheInstance()->load("Assets/Audio/Sound Effects/gun shot 2.wav", "gunshot", SOUND_EFFECT);
     SoundHandler::getTheInstance()->load("Assets/Audio/Sound Effects/gun shot 1.wav", "energyball", SOUND_EFFECT);
+    SoundHandler::getTheInstance()->load("Assets/Audio/Sound Effects/missile 2.wav", "missile", SOUND_EFFECT);
 
   // anything that is not created at runtime (bullets, explosions, ect) must be created here
   GameObjectFactory::getTheInstance()->registerType("PistolShrimp", new PistolShrimpCreator());

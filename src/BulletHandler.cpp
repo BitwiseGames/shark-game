@@ -67,6 +67,11 @@ void BulletHandler::addPlayerBullet(int x, int y, float rot, string type, int en
         b->setDrawWidth(energyBallSize);
         b->setDrawHeight(energyBallSize);
     }
+    else if (type == "rocket"){
+        SoundHandler::getTheInstance()->playSound("missile", 0);
+        b->load(x, y, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_SPEED, rot, "playerrocket");
+    }
+
     b->setCollisionLayers(collisionLayers);
     playerBullets.push_back(b);
 }
