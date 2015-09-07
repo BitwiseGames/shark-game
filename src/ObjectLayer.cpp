@@ -1,5 +1,6 @@
 #include "ObjectLayer.h"
 #include "BulletHandler.h"
+#include "ExplosionHandler.h"
 #include "CollisionHandler.h"
 #include "Level.h"
 
@@ -26,6 +27,7 @@ void ObjectLayer::update(Level* level){
 
   CollisionHandler::getTheInstance()->update(level->getPlayer(), gameObjects);
   BulletHandler::getTheInstance()->update();
+  ExplosionHandler::getTheInstance()->update();
 
 }
 
@@ -34,4 +36,5 @@ void ObjectLayer::render(){
     gameObjects[i]->render();
   }
   BulletHandler::getTheInstance()->render();
+  ExplosionHandler::getTheInstance()->render();
 }

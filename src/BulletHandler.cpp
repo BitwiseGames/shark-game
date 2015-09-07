@@ -63,7 +63,7 @@ void BulletHandler::addPlayerBullet(int x, int y, float rot, string type, int en
     }
     else if (type == "energyball"){
         SoundHandler::getTheInstance()->playSound("energyball", 0);
-        b->load(x, y, 64, 64, BULLET_SPEED, rot, "playerenergyball");
+        b->load(x, y, 64, 64, BULLET_SPEED, rot, "playerenergyball"); // width and height must always be 64, so that the energy ball is drawn properly
         b->setDrawWidth(energyBallSize);
         b->setDrawHeight(energyBallSize);
     }

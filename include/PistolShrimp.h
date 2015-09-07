@@ -8,6 +8,12 @@ class PistolShrimp : public Enemy{
     public:
         PistolShrimp();
         void update();
+        void setHealth(int newHealth){
+            health = newHealth;
+            if (health <= 0){
+                dead = true;
+            }
+        }
 
     private:
         int shotCoolDown;

@@ -1,6 +1,7 @@
 #include "Bullet.h"
 #include "Game.h"
 #include "TextureHandler.h"
+#include "ExplosionHandler.h"
 #include "Camera.h"
 #include <cmath>
 
@@ -13,6 +14,9 @@ void Bullet::update(){
     position.setY( position.Y() + newY);
     if (tileCollisions(position)){
         dead = true;
+        if (textureID == "playerrocket"){
+            ExplosionHandler::getTheInstance()->addExplosion(position.X(), position.Y(), 50, 50, 14, "explosion");
+        }
     }
 }
 
