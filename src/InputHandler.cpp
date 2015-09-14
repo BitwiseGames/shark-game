@@ -35,6 +35,7 @@ void InputHandler::update(){
     SDL_PollEvent(&event);
     switch (event.type){
     case SDL_QUIT:
+        Game::getTheInstance()->getStateHandler()->popState();
         Game::getTheInstance()->quitGame();
         break;
     case SDL_MOUSEBUTTONDOWN:
@@ -81,8 +82,8 @@ bool InputHandler::getKey(SDL_Scancode key){
         if (keyStates[key] == 1){
             return true;
         }
-        return false;
     }
+    return false;
 }
 
 bool InputHandler::getMouseState(int mouseButton){

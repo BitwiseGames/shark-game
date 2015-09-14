@@ -5,7 +5,6 @@
 
 class Bullet : public GameObject {
     public:
-        Bullet(){};
         void update();
         void render();
         void load(int, int, int, int, float, float, string);

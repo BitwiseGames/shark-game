@@ -1,5 +1,6 @@
 #include "BulletHandler.h"
 #include "SoundHandler.h"
+#include "Flamethrower.h"
 
 BulletHandler* BulletHandler::theInstance = nullptr;
 
@@ -70,6 +71,11 @@ void BulletHandler::addPlayerBullet(int x, int y, float rot, string type, int en
     else if (type == "rocket"){
         SoundHandler::getTheInstance()->playSound("missile", 0);
         b->load(x, y, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_SPEED, rot, "playerrocket");
+    }
+    else if (type == "flame"){
+        Bullet* f = new Flamethrower;
+        f->load(x, y, 320, 32, 320, rot, "flame");
+        playerBullets.push_back(f);
     }
 
     b->setCollisionLayers(collisionLayers);

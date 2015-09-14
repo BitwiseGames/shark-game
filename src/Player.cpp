@@ -54,19 +54,38 @@ void Player::update(){
         currentWeapon = "rocketlauncher";
         maxCoolDown = 60;
     }
+    else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_5)){
+        currentWeapon = "freezeray";
+    }
+    else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_6)){
+        currentWeapon = "flamethrower";
+    }
 
-    // shooting bullets
+
     shotCoolDown--;
-    if (currentWeapon == "machinegun" || currentWeapon == "pistol"){
-        if (InputHandler::getTheInstance()->getMouseState(LEFT)){
-            if (shotCoolDown <= 0){
-                shotCoolDown = maxCoolDown;
+    if (InputHandler::getTheInstance()->getMouseState(LEFT)){
+        if (shotCoolDown <= 0){
+            shotCoolDown = maxCoolDown;
+            // shooting bullets
+            if (currentWeapon == "machinegun" || currentWeapon == "pistol"){
                 shoot("bullet");
+            }
+            // shooting rockets
+            else if (currentWeapon == "rocketlauncher"){
+                shoot("rocket");
+            }
+
+            else if (currentWeapon == "freezeray"){
+                // gotta figure out how to draw a line, SDL_RenderDrawLine doesn't work
+            }
+            else if (currentWeapon == "flamethrower"){
+                shoot("flame");
             }
         }
     }
-    // shooting the energy ball gun
-    else if (currentWeapon == "energygun"){
+
+    // shooting the energy ball gun, this has to e checked separately
+    if (currentWeapon == "energygun"){
         if (InputHandler::getTheInstance()->getMouseState(LEFT)){
             laserCharge++;
         }
@@ -74,15 +93,6 @@ void Player::update(){
             if (laserCharge > 0){ // we've charged, then let go, so shoot
                 shoot("energyball");
                 laserCharge = 0;
-            }
-        }
-    }
-    // shooting rockets
-    else if (currentWeapon == "rocketlauncher"){
-        if (InputHandler::getTheInstance()->getMouseState(LEFT)){
-            if (shotCoolDown <= 0){
-                shotCoolDown = maxCoolDown;
-                shoot("rocket");
             }
         }
     }
