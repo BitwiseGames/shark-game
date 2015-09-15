@@ -8,6 +8,7 @@ class Flamethrower : public Bullet {
         void load(int, int, int, int, int, float, string);
 
         void update();
+        void render();
     private:
         int time;
 

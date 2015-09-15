@@ -6,7 +6,6 @@
 #include "Player.h"
 
 void Flamethrower::load(int x, int y, int w, int h, int t, float rot, string ID){
-    cout << "creating flamethrower" << endl;
     position.setX(x);
     position.setY(y);
     width = w;
@@ -15,7 +14,13 @@ void Flamethrower::load(int x, int y, int w, int h, int t, float rot, string ID)
     rotation = rot;
     textureID = ID;
     TextureHandler::getTheInstance()->load("Assets/Art/" + textureID + ".png", textureID, Game::getTheInstance()->getRenderer());
+}
 
+void Flamethrower::render(){
+    int drawX, drawY;
+    drawX = (position.X() - Camera::getTheInstance()->getPosition().X());
+    drawY = (position.Y() - Camera::getTheInstance()->getPosition().Y());                                                                    // rotation point
+    TextureHandler::getTheInstance()->renderTexture(textureID, drawX, drawY, width, height, Game::getTheInstance()->getRenderer(), rotation, {0, height/2});
 }
 
 void Flamethrower::update(){

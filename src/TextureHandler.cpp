@@ -40,7 +40,7 @@ void TextureHandler::removeFromTextureMap(string ID){
     textureMap.erase(ID);
 }
 
-void TextureHandler::renderTexture(string ID, int x, int y, int width, int height, SDL_Renderer* renderer, SDL_RendererFlip flip){
+void TextureHandler::renderTexture(string ID, int x, int y, int width, int height, SDL_Renderer* renderer, double rot, SDL_Point center, SDL_RendererFlip flip){
 
     SDL_Rect srcRect;
     SDL_Rect dstRect;
@@ -51,7 +51,7 @@ void TextureHandler::renderTexture(string ID, int x, int y, int width, int heigh
     dstRect.x = x;
     dstRect.y = y;
 
-    SDL_RenderCopyEx(renderer, textureMap[ID], &srcRect, &dstRect, 0, 0, flip);
+    SDL_RenderCopyEx(renderer, textureMap[ID], &srcRect, &dstRect, rot, &center, flip);
 
 }
 
