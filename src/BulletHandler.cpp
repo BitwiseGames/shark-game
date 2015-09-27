@@ -72,10 +72,12 @@ void BulletHandler::addPlayerBullet(int x, int y, float rot, string type, int en
         SoundHandler::getTheInstance()->playSound("missile", 0);
         b->load(x, y, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_SPEED, rot, "playerrocket");
     }
-    else if (type == "flame"){
-        Bullet* f = new Flamethrower;
-        f->load(x, y, 320, 32, 320, rot, "flame");
-        playerBullets.push_back(f);
+    else if (type == "cannonball"){
+        SoundHandler::getTheInstance()->playSound("cannonball", 0);
+        b->load(x, y, CANNONBALL_SIZE, CANNONBALL_SIZE, CANNONBALL_SPEED, rot, "playercannonball");
+    }
+    else if (type == "fist"){
+        b->load(x, y, FIST_SIZE, FIST_SIZE, FIST_SPEED, rot, "playerfist");
     }
 
     b->setCollisionLayers(collisionLayers);

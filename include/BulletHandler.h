@@ -30,9 +30,13 @@ class BulletHandler{
         vector<Bullet*> enemyBullets;
         const float BULLET_SPEED = 2000.0f;
         const float MISSILE_SPEED = 3000.0f;
+        const float CANNONBALL_SPEED = 1500.0f;
+        const float FIST_SPEED = 2500.0f;
         const int BULLET_SIZE = 6;
         const int MISSILE_WIDTH = 32;
         const int MISSILE_HEIGHT = 16;
+        const int CANNONBALL_SIZE = 32;
+        const int FIST_SIZE = 16;
 
         void updatePlayerBullets();
         void renderPlayerBullets();
