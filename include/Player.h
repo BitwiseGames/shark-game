@@ -31,7 +31,7 @@ class Player : public GameObject {
         int shotCoolDown;
         int maxCoolDown;
 
-        void shoot(string);
+        void shoot();
 };
 
 class PlayerCreator : public BaseCreator {

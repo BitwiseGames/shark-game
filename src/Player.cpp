@@ -64,25 +64,11 @@ void Player::update(){
     }
 
 
-    shotCoolDown--;
-    if (InputHandler::getTheInstance()->getMouseState(LEFT)){
+    shotCoolDown--;                                                             // energy gun has to be checked separately
+    if (InputHandler::getTheInstance()->getMouseState(LEFT) && currentWeapon != "energygun"){
         if (shotCoolDown <= 0){
             shotCoolDown = maxCoolDown;
-            // shooting bullets
-            if (currentWeapon == "machinegun" || currentWeapon == "pistol"){
-                shoot("bullet");
-            }
-            // shooting rockets
-            else if (currentWeapon == "rocketlauncher"){
-                shoot("rocket");
-            }
-
-            else if (currentWeapon == "cannon"){
-                shoot("cannonball");
-            }
-            else if (currentWeapon == "fistgun"){
-                shoot("fist");
-            }
+            shoot();
         }
     }
 
@@ -93,7 +79,7 @@ void Player::update(){
         }
         else {
             if (laserCharge > 0){ // we've charged, then let go, so shoot
-                shoot("energyball");
+                shoot();
                 laserCharge = 0;
             }
         }
@@ -103,43 +89,29 @@ void Player::update(){
     if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_A) || InputHandler::getTheInstance()->getKey(SDL_SCANCODE_LEFT)){
         rotation = 180;
         flip = SDL_FLIP_VERTICAL;
+        collisionWidth = 32;
+        collisionHeight = 16;
     }
     else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_D) || InputHandler::getTheInstance()->getKey(SDL_SCANCODE_RIGHT)){
         rotation = 0;
         flip = SDL_FLIP_NONE;
+        collisionWidth = 32;
+        collisionHeight = 16;
     }
     if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_S) || InputHandler::getTheInstance()->getKey(SDL_SCANCODE_DOWN)){
         rotation = 90;
+        collisionWidth = 16;
+        collisionHeight = 32;
     }
     else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_W) || InputHandler::getTheInstance()->getKey(SDL_SCANCODE_UP)){
         rotation = -90;
+        collisionWidth = 16;
+        collisionHeight = 32;
     }
 
-    float newX, newY;
-    if (rotation == 180){
-        newX = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
-        newY = 0;
-        collisionWidth = 60;
-        collisionHeight = 30;
-    }
-    else if (rotation == 0){
-        newX = (Game::getTheInstance()->getDeltaTime() * speed);
-        newY = 0;
-        collisionWidth = 60;
-        collisionHeight = 30;
-    }
-    else if (rotation == 90){
-        newX = 0;
-        newY = (Game::getTheInstance()->getDeltaTime() * speed);
-        collisionWidth = 30;
-        collisionHeight = 60;
-    }
-    else if (rotation == -90){
-        newX = 0;
-        newY = -1 * (Game::getTheInstance()->getDeltaTime() * speed);
-        collisionWidth = 30;
-        collisionHeight = 60;
-    }
+
+    float newX = cos(rotation / 180 * pi) * speed * Game::getTheInstance()->getDeltaTime();
+    float newY = sin(rotation / 180 * pi) * speed * Game::getTheInstance()->getDeltaTime();
 
     Vector2D newPos = Vector2D(position.X() + newX, position.Y() + newY);
     if (!tileCollisions(newPos)){
@@ -148,7 +120,7 @@ void Player::update(){
     }
 }
 
-void Player::shoot(string type){
+void Player::shoot(){
     int mouseX = InputHandler::getTheInstance()->getMousePosition()->X();
     int mouseY = InputHandler::getTheInstance()->getMousePosition()->Y();
     float px = (position.X() - Game::getTheInstance()->getDeltaTime() * speed) - Camera::getTheInstance()->getPosition().X();
@@ -158,5 +130,5 @@ void Player::shoot(string type){
     px += Camera::getTheInstance()->getPosition().X();
     py += Camera::getTheInstance()->getPosition().Y();
 
-    BulletHandler::getTheInstance()->addPlayerBullet(px, py, degrees, type, laserCharge);
+    BulletHandler::getTheInstance()->addPlayerBullet(px, py, degrees, currentWeapon, laserCharge);
 }

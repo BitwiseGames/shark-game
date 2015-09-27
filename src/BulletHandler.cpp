@@ -58,25 +58,25 @@ void BulletHandler::renderEnemyBullets(){
 
 void BulletHandler::addPlayerBullet(int x, int y, float rot, string type, int energyBallSize){
     Bullet* b = new Bullet();
-    if (type == "bullet"){
+    if (type == "pistol" || type == "machinegun"){
         SoundHandler::getTheInstance()->playSound("gunshot", 0);
         b->load(x, y, BULLET_SIZE, BULLET_SIZE, BULLET_SPEED, rot, "playerbullet");
     }
-    else if (type == "energyball"){
+    else if (type == "energygun"){
         SoundHandler::getTheInstance()->playSound("energyball", 0);
         b->load(x, y, 64, 64, BULLET_SPEED, rot, "playerenergyball"); // width and height must always be 64, so that the energy ball is drawn properly
         b->setDrawWidth(energyBallSize);
         b->setDrawHeight(energyBallSize);
     }
-    else if (type == "rocket"){
+    else if (type == "rocketlauncher"){
         SoundHandler::getTheInstance()->playSound("missile", 0);
         b->load(x, y, MISSILE_WIDTH, MISSILE_HEIGHT, MISSILE_SPEED, rot, "playerrocket");
     }
-    else if (type == "cannonball"){
+    else if (type == "cannon"){
         SoundHandler::getTheInstance()->playSound("cannonball", 0);
         b->load(x, y, CANNONBALL_SIZE, CANNONBALL_SIZE, CANNONBALL_SPEED, rot, "playercannonball");
     }
-    else if (type == "fist"){
+    else if (type == "fistgun"){
         b->load(x, y, FIST_SIZE, FIST_SIZE, FIST_SPEED, rot, "playerfist");
     }
 

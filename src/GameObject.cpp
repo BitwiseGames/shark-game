@@ -41,7 +41,7 @@ bool GameObject::tileCollisions(Vector2D pos){
         Vector2D startPos = pos;
         startPos.setX( startPos.X() + 3);
         startPos.setY( startPos.Y() + 4);
-        Vector2D endPos(pos.X() + collisionWidth, pos.Y() + collisionHeight);
+        Vector2D endPos(pos.X() + collisionWidth, pos.Y() + collisionHeight - 8);
 
         for(int i = startPos.X(); i < endPos.X(); i++) {
             for(int j = startPos.Y(); j < endPos.Y(); j++) {

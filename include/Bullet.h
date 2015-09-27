@@ -15,6 +15,8 @@ class Bullet : public GameObject {
             }
         }
 
+        bool tileCollisions(Vector2D); // have to overwrite it b/c it's slightly different
+
         void setDrawWidth(int dw)
         { drawWidth = dw; };
         void setDrawHeight(int dh)
