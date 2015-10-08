@@ -10,10 +10,24 @@
 Player::Player(){
     speed = MIN_SPEED;
     spaceKeyDown = false;
-    currentWeapon = "pistol";
-    laserCharge = 0;
+    weapons[0] = "pistol";
+    weapons[1] = "machinegun";
+    weapons[2] = "energygun";
+    weapons[3] = "rocketlauncher";
+    weapons[4] = "fistgun";
+    weapons[5] = "cannon";
+    weapons[6] = "dragongun";
+    weaponCooldowns[0] = 15;
+    weaponCooldowns[1] = 5;
+    weaponCooldowns[2] = 0;
+    weaponCooldowns[3] = 60;
+    weaponCooldowns[4] = 30;
+    weaponCooldowns[5] = 90;
+    weaponCooldowns[6] = 120;
+    currentWeapon = weapons[weaponIndex];
+    maxCoolDown = weaponCooldowns[weaponIndex];
     shotCoolDown = 0;
-    maxCoolDown = 15;
+    laserCharge = 0;
     Camera::getTheInstance()->setTarget(this);
     type = "Player";
 }
@@ -62,7 +76,28 @@ void Player::update(){
         currentWeapon = "cannon";
         maxCoolDown = 90;
     }
+    else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_7)){
+        currentWeapon = "dragongun";
+        maxCoolDown = 120;
+    }
 
+    /*if (InputHandler::getTheInstance()->scrolling() == "down"){
+        weaponIndex--;
+        if (weaponIndex < 0){
+            weaponIndex = 6;
+        }
+        currentWeapon = weapons[weaponIndex];
+        maxCoolDown = weaponCooldowns[weaponIndex];
+    }
+    else if (InputHandler::getTheInstance()->scrolling() == "up"){
+        weaponIndex++;
+        if (weaponIndex > 6){
+            weaponIndex = 0;
+        }
+        currentWeapon = weapons[weaponIndex];
+        maxCoolDown = weaponCooldowns[weaponIndex];
+    }
+*/
 
     shotCoolDown--;                                                             // energy gun has to be checked separately
     if (InputHandler::getTheInstance()->getMouseState(LEFT) && currentWeapon != "energygun"){
@@ -90,22 +125,22 @@ void Player::update(){
         rotation = 180;
         flip = SDL_FLIP_VERTICAL;
         collisionWidth = 32;
-        collisionHeight = 16;
+        collisionHeight = 32;
     }
     else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_D) || InputHandler::getTheInstance()->getKey(SDL_SCANCODE_RIGHT)){
         rotation = 0;
         flip = SDL_FLIP_NONE;
         collisionWidth = 32;
-        collisionHeight = 16;
+        collisionHeight = 32;
     }
     if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_S) || InputHandler::getTheInstance()->getKey(SDL_SCANCODE_DOWN)){
         rotation = 90;
-        collisionWidth = 16;
+        collisionWidth = 32;
         collisionHeight = 32;
     }
     else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_W) || InputHandler::getTheInstance()->getKey(SDL_SCANCODE_UP)){
         rotation = -90;
-        collisionWidth = 16;
+        collisionWidth = 32;
         collisionHeight = 32;
     }
 

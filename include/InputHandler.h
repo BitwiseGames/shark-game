@@ -2,6 +2,7 @@
 #define INPUTHANDLER_H
 
 #include "SDL.h"
+#include <string>
 #include <vector>
 #include "Vector2D.h"
 
@@ -22,6 +23,7 @@ class InputHandler {
         void update();
         bool getKey(SDL_Scancode);
         bool getMouseState(int);
+        string scrolling();
         Vector2D* getMousePosition();
 
     private:
@@ -31,6 +33,8 @@ class InputHandler {
         const Uint8* keyStates;
         vector<bool> mouseButtonStates;
         Vector2D* mousePosition;
+        bool scrollDown = false;
+        bool scrollUp = false;
 
         const int NUM_MOUSE_BUTTONS = 3; // SDL supports up to 255 mouse buttons
 

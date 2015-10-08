@@ -32,9 +32,11 @@ void ObjectLayer::update(Level* level){
 }
 
 void ObjectLayer::render(){
+
   for (int i = 0; i < gameObjects.size(); i++){
     gameObjects[i]->render();
   }
-  BulletHandler::getTheInstance()->render();
+
   ExplosionHandler::getTheInstance()->render();
+  BulletHandler::getTheInstance()->render();
 }

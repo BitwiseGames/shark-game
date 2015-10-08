@@ -31,6 +31,8 @@ void InputHandler::reset(){
 }
 
 void InputHandler::update(){
+    // reset them every frame
+    scrollDown = scrollUp = false;
     SDL_Event event;
     SDL_PollEvent(&event);
     switch (event.type){
@@ -64,6 +66,15 @@ void InputHandler::update(){
             mouseButtonStates[MIDDLE] = false;
             break;
         }
+    case SDL_MOUSEWHEEL:
+
+        if (event.wheel.y < 0){
+            scrollDown = true;
+        }
+        else if (event.wheel.y > 0){
+            scrollUp = true;
+        }
+
     case SDL_MOUSEMOTION:
         mousePosition->setX(event.motion.x);
         mousePosition->setY(event.motion.y);
@@ -88,6 +99,11 @@ bool InputHandler::getKey(SDL_Scancode key){
 
 bool InputHandler::getMouseState(int mouseButton){
     return (mouseButtonStates[mouseButton] == true);
+}
+
+string InputHandler::scrolling(){
+    if (scrollDown) return "down";
+    else if (scrollUp) return "up";
 }
 
 Vector2D* InputHandler::getMousePosition(){

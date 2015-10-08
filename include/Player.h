@@ -27,6 +27,9 @@ class Player : public GameObject {
         const int SPEED_CHANGER = 2;
         const int MAX_SPEEDS = 4;
         string currentWeapon;
+        string weapons[7];
+        int weaponCooldowns[7];
+        int weaponIndex = 0;
         int laserCharge;
         int shotCoolDown;
         int maxCoolDown;

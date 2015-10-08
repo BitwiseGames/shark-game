@@ -11,7 +11,8 @@ Level::~Level(){
 }
 
 void Level::render(){
-    for (int i = 0; i < layers.size(); i++){
+    // loop backwards so that tiles get drawn first
+    for (int i = layers.size() - 1; i >= 0; i--){
         layers[i]->render();
     }
 }

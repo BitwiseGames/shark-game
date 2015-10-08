@@ -5,7 +5,7 @@
 
 void Explosion::update(){
     // update the animation
-    currentFrame = int(((SDL_GetTicks() / (1000 / animSpeed)) % numFrames));
+    currentFrame++;
     if (currentFrame == numFrames-1){ // we're at the end of the animation
         dead = true;
     }

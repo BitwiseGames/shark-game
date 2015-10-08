@@ -55,6 +55,6 @@ void PufferFish::blowUp(){
         blownUp = true;
     }
     else {
-        currentFrame = int(((SDL_GetTicks() / (1000 / animSpeed)) % numFrames));
+        currentFrame++;// = int(((SDL_GetTicks() / (1000 / animSpeed)) % numFrames));
     }
 }
