@@ -101,9 +101,10 @@ bool InputHandler::getMouseState(int mouseButton){
     return (mouseButtonStates[mouseButton] == true);
 }
 
-string InputHandler::scrolling(){
-    if (scrollDown) return "down";
-    else if (scrollUp) return "up";
+int InputHandler::scrolling(){
+    if (scrollDown) return -1;
+    else if (scrollUp) return 1;
+    else return 0;
 }
 
 Vector2D* InputHandler::getMousePosition(){

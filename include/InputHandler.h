@@ -23,7 +23,7 @@ class InputHandler {
         void update();
         bool getKey(SDL_Scancode);
         bool getMouseState(int);
-        string scrolling();
+        int scrolling();
         Vector2D* getMousePosition();
 
     private:

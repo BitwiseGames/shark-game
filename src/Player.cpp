@@ -81,7 +81,8 @@ void Player::update(){
         maxCoolDown = 120;
     }
 
-    /*if (InputHandler::getTheInstance()->scrolling() == "down"){
+
+    if (InputHandler::getTheInstance()->scrolling() < 0){ // scrolling down
         weaponIndex--;
         if (weaponIndex < 0){
             weaponIndex = 6;
@@ -89,7 +90,7 @@ void Player::update(){
         currentWeapon = weapons[weaponIndex];
         maxCoolDown = weaponCooldowns[weaponIndex];
     }
-    else if (InputHandler::getTheInstance()->scrolling() == "up"){
+    else if (InputHandler::getTheInstance()->scrolling() > 0){ // scrolling up
         weaponIndex++;
         if (weaponIndex > 6){
             weaponIndex = 0;
@@ -97,7 +98,7 @@ void Player::update(){
         currentWeapon = weapons[weaponIndex];
         maxCoolDown = weaponCooldowns[weaponIndex];
     }
-*/
+
 
     shotCoolDown--;                                                             // energy gun has to be checked separately
     if (InputHandler::getTheInstance()->getMouseState(LEFT) && currentWeapon != "energygun"){
