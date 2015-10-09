@@ -35,7 +35,8 @@ void CollisionHandler::PlayerBulletEnemyCollisions(vector<GameObject*> gameObjec
             int bw = b->Width();
             int bh = b->Height();
             if (Tests::AABB(ex, ey, ew, eh, bx, by, bw, bh)){
-                b->setHealth(0);
+                int curBHealth = b->Health();
+                b->setHealth( curBHealth --);
                 int curHealth = object->Health();
                 curHealth--;
                 object->setHealth(curHealth);

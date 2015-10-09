@@ -79,6 +79,10 @@ void BulletHandler::addPlayerBullet(int x, int y, float rot, string type, int en
     else if (type == "fistgun"){
         b->load(x, y, FIST_SIZE, FIST_SIZE, FIST_SPEED, rot, "playerfist");
     }
+    else if (type == "dragongun"){
+        b->load(x, y, 256, 64, 500, rot, "playerdragon");
+        b->setHealth(3); // dragons can hit multiple enemies without disappearing
+    }
 
     b->setCollisionLayers(collisionLayers);
     playerBullets.push_back(b);
