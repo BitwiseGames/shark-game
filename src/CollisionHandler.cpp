@@ -57,12 +57,16 @@ void CollisionHandler::playerEnemyCollisions(Player* player, vector<GameObject*>
         if (player->Position()->X() < object->Position()->X() + object->CollisionWidth() && player->Position()->X() + player->CollisionWidth() > object->Position()->X()){
             //hitting the top
             if ( player->Position()->Y() + player->CollisionHeight() > object->Position()->Y() && player->Position()->Y() < object->Position()->Y()){
-                player->setPosition({player->Position()->X(), object->Position()->Y() - player->CollisionHeight()});
+                if (object->Solid()){ // if the object is solid, the player should NOT pass through it
+                    player->setPosition({player->Position()->X(), object->Position()->Y() - player->CollisionHeight()});
+                }
                 object->playerCollide();
             }
             //hitting the bottom
             else if (player->Position()->Y() < object->Position()->Y() + object->CollisionHeight() && player->Position()->Y() + player->CollisionHeight() > object->Position()->Y() + object->CollisionHeight()){
-                player->setPosition({player->Position()->X(), object->Position()->Y() + object->CollisionHeight()});
+                if (object->Solid()){
+                    player->setPosition({player->Position()->X(), object->Position()->Y() + object->CollisionHeight()});
+                }
                 object->playerCollide();
             }
         }
@@ -70,12 +74,16 @@ void CollisionHandler::playerEnemyCollisions(Player* player, vector<GameObject*>
         if (player->Position()->Y() < object->Position()->Y() + object->CollisionHeight() && player->Position()->Y() + player->CollisionHeight() > object->Position()->Y()){
             //hitting the left side
             if ( player->Position()->X() + object->CollisionWidth() > object->Position()->X() && player->Position()->X() < object->Position()->X()){
-                player->setPosition({object->Position()->X() - player->Width(), player->Position()->Y()});
+                if (object->Solid()){
+                    player->setPosition({object->Position()->X() - player->Width(), player->Position()->Y()});
+                }
                 object->playerCollide();
             }
             //hitting the right side
             else if ( player->Position()->X() < object->Position()->X() + object->CollisionWidth() && player->Position()->X() + player->CollisionWidth() > object->Position()->X()){
-                player->setPosition({object->Position()->X() + object->CollisionWidth(), player->Position()->Y()});
+                if (object->Solid()){
+                    player->setPosition({object->Position()->X() + object->CollisionWidth(), player->Position()->Y()});
+                }
                 object->playerCollide();
             }
         }

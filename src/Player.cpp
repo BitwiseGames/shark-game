@@ -57,29 +57,36 @@ void Player::update(){
     if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_1)){ // ordinary gun
         currentWeapon = "pistol";
         maxCoolDown = 15;
+        weaponIndex = 0;
     }
     else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_2)){ // machine gun
         currentWeapon = "machinegun";
         maxCoolDown = 5;
+        weaponIndex = 1;
     }
     else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_3)){
         currentWeapon = "energygun";
+        weaponIndex = 2;
     }
     else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_4)){
         currentWeapon = "rocketlauncher";
         maxCoolDown = 60;
+        weaponIndex = 3;
     }
     else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_5)){
         currentWeapon = "fistgun";
         maxCoolDown = 30;
+        weaponIndex = 4;
     }
     else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_6)){
         currentWeapon = "cannon";
         maxCoolDown = 90;
+        weaponIndex = 5;
     }
     else if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_7)){
         currentWeapon = "dragongun";
         maxCoolDown = 120;
+        weaponIndex = 6;
     }
 
     if (InputHandler::getTheInstance()->scrolling() < 0){ // scrolling down
@@ -97,10 +104,6 @@ void Player::update(){
         }
         currentWeapon = weapons[weaponIndex];
         maxCoolDown = weaponCooldowns[weaponIndex];
-    }
-
-    if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_B)){
-        ExplosionHandler::getTheInstance()->addInkblot(position.X(), position.Y(), 500, 500, 300, "inkblot");
     }
 
     shotCoolDown--;

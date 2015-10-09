@@ -46,6 +46,8 @@ class GameObject {
     { return dying; };
     bool Dead()
     { return dead; };
+    bool Solid()
+    { return solid; };
     Vector2D* Position()
     { return &position; };
     string getTextureID()
@@ -73,6 +75,7 @@ class GameObject {
     string type;
     bool dying = false;
     bool dead = false;
+    bool solid = true; // can the player pass through it?
     Vector2D position = Vector2D(0,0);
     vector<TileLayer*>* collisionLayers;
 };

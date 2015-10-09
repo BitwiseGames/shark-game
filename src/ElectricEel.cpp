@@ -9,6 +9,7 @@
 
 ElectricEel::ElectricEel() {
     speed = 50;
+    solid = false;
 }
 
 void ElectricEel::update(){

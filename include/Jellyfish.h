@@ -67,8 +67,6 @@ class Jellyfish : public Enemy {
         int spawnY;
         const int BELL_HEIGHT = 54;
         const int PUSH_DISTANCE = 50;
-        SDL_Rect bell;
-        SDL_Rect tentacles;
 };
 
 class JellyfishCreator : public BaseCreator {
