@@ -31,8 +31,8 @@ void InputHandler::reset(){
 }
 
 void InputHandler::update(){
-    // reset them every frame
-    scrollDown = scrollUp = false;
+    // reset the value every frame
+    scrollDirection = 0;
     SDL_Event event;
     SDL_PollEvent(&event);
     switch (event.type){
@@ -67,14 +67,8 @@ void InputHandler::update(){
             break;
         }
     case SDL_MOUSEWHEEL:
-
-        if (event.wheel.y < 0){
-            scrollDown = true;
-        }
-        else if (event.wheel.y > 0){
-            scrollUp = true;
-        }
-
+        scrollDirection = event.wheel.y;
+        break;
     case SDL_MOUSEMOTION:
         mousePosition->setX(event.motion.x);
         mousePosition->setY(event.motion.y);
@@ -102,9 +96,7 @@ bool InputHandler::getMouseState(int mouseButton){
 }
 
 int InputHandler::scrolling(){
-    if (scrollDown) return -1;
-    else if (scrollUp) return 1;
-    else return 0;
+    return scrollDirection;
 }
 
 Vector2D* InputHandler::getMousePosition(){

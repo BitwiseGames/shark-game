@@ -14,6 +14,13 @@ class Jellyfish : public Enemy {
             birthTime = SDL_GetTicks();
         };
 
+        void setHealth(int newHealth){
+            health = newHealth;
+            if (health <= 0){
+                dead = true;
+            }
+        }
+
         void update(){
             float timeDiff = (SDL_GetTicks() - birthTime) / 100.0f;
             position.setY(spawnY + sin(timeDiff) * Game::getTheInstance()->getDeltaTime() * 1000);

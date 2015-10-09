@@ -81,7 +81,6 @@ void Player::update(){
         maxCoolDown = 120;
     }
 
-
     if (InputHandler::getTheInstance()->scrolling() < 0){ // scrolling down
         weaponIndex--;
         if (weaponIndex < 0){
@@ -99,8 +98,8 @@ void Player::update(){
         maxCoolDown = weaponCooldowns[weaponIndex];
     }
 
-
-    shotCoolDown--;                                                             // energy gun has to be checked separately
+    shotCoolDown--;
+                                                           // energy gun has to be checked separately
     if (InputHandler::getTheInstance()->getMouseState(LEFT) && currentWeapon != "energygun"){
         if (shotCoolDown <= 0){
             shotCoolDown = maxCoolDown;

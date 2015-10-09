@@ -33,8 +33,7 @@ class InputHandler {
         const Uint8* keyStates;
         vector<bool> mouseButtonStates;
         Vector2D* mousePosition;
-        bool scrollDown = false;
-        bool scrollUp = false;
+        int scrollDirection = 0;
 
         const int NUM_MOUSE_BUTTONS = 3; // SDL supports up to 255 mouse buttons
 
