@@ -3,6 +3,7 @@
 #include "InputHandler.h"
 #include "BulletHandler.h"
 #include "Tests.h"
+#include "ExplosionHandler.h"
 #include <cmath>
 
 #define pi 3.1415926535897932384626433832795
@@ -96,6 +97,10 @@ void Player::update(){
         }
         currentWeapon = weapons[weaponIndex];
         maxCoolDown = weaponCooldowns[weaponIndex];
+    }
+
+    if (InputHandler::getTheInstance()->getKey(SDL_SCANCODE_B)){
+        ExplosionHandler::getTheInstance()->addInkblot(position.X(), position.Y(), 500, 500, 300, "inkblot");
     }
 
     shotCoolDown--;

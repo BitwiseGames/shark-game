@@ -35,3 +35,11 @@ void ExplosionHandler::addExplosion(int x, int y, int w, int h, int time, string
    e->setDrawHeight(h);
    explosions.push_back(e);
 }
+
+void ExplosionHandler::addInkblot(int x, int y, int w, int h, int time, string ID){
+   Inkblot* i = new Inkblot;
+   i->load(x,y,250,250,time,ID);
+   i->setDrawWidth(w);
+   i->setDrawHeight(h);
+   explosions.push_back(i);
+}

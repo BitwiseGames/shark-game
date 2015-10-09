@@ -31,5 +31,5 @@ void Explosion::load(int x, int y, int w, int h, int time, string ID){
     collisionHeight = height;
     drawWidth = width;
     drawHeight = height;
-    TextureHandler::getTheInstance()->load("Assets/Art/explosion.png", textureID, Game::getTheInstance()->getRenderer());
+    TextureHandler::getTheInstance()->load("Assets/Art/explosion.png", textureID, Game::getTheInstance()->getRenderer());\
 }

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Explosion.h"
+#include "Inkblot.h"
 
 using namespace std;
 
@@ -14,6 +15,7 @@ class ExplosionHandler{
         void render();
 
         void addExplosion(int,int,int,int,int,string);
+        void addInkblot(int,int,int,int,int,string);
 
         vector<Explosion*> getExplosions()
         { return explosions; };
