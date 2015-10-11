@@ -16,7 +16,7 @@ void Bullet::update(){
     if (tileCollisions(position)){
         dead = true;
         if (textureID == "playerrocket"){
-            ExplosionHandler::getTheInstance()->addExplosion(position.X(), position.Y(), 150, 150, 14, "explosion");
+            ExplosionHandler::getTheInstance()->addExplosion(position.X(), position.Y(), 150, 150, 14);
         }
     }
 }

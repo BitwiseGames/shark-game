@@ -22,7 +22,7 @@ class Inkblot : public Explosion {
             TextureHandler::getTheInstance()->renderScale(textureID, srcRect, dstRect, Game::getTheInstance()->getRenderer(), rotation);
         }
 
-        void load(int x, int y, int w, int h, int time, string ID){
+        void load(int x, int y, int w, int h, int time, bool follow, string ID){
             position.setX(x);
             position.setY(y);
             width = w;
@@ -33,6 +33,7 @@ class Inkblot : public Explosion {
             drawWidth = width;
             drawHeight = height;
             timeRemaining = time;
+            followPlayer = follow;
             TextureHandler::getTheInstance()->load("Assets/Art/inkblot.png", textureID, Game::getTheInstance()->getRenderer());
         }
 
@@ -45,6 +46,7 @@ class Inkblot : public Explosion {
         int drawWidth; // these variables are necessary to resize the sprite
         int drawHeight;
         int timeRemaining;
+        bool followPlayer; // stay in the same spot on the screen? (like mario kart wii inkblots) Or follow the player?
 };
 
 #endif

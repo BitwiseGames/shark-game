@@ -14,8 +14,8 @@ class ExplosionHandler{
         void update();
         void render();
 
-        void addExplosion(int,int,int,int,int,string);
-        void addInkblot(int,int,int,int,int,string);
+        void addExplosion(int,int,int,int,int);
+        void addInkblot(int,int,int,int,int,bool);
 
         vector<Explosion*> getExplosions()
         { return explosions; };

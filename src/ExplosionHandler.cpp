@@ -28,17 +28,17 @@ void ExplosionHandler::render(){
     }
 }
 
-void ExplosionHandler::addExplosion(int x, int y, int w, int h, int time, string ID){
+void ExplosionHandler::addExplosion(int x, int y, int w, int h, int time){
    Explosion* e = new Explosion;
-   e->load(x,y,150,150,time,ID);
+   e->load(x,y,150,150,time,"explosion");
    e->setDrawWidth(w);
    e->setDrawHeight(h);
    explosions.push_back(e);
 }
 
-void ExplosionHandler::addInkblot(int x, int y, int w, int h, int time, string ID){
+void ExplosionHandler::addInkblot(int x, int y, int w, int h, int time, bool follow){
    Inkblot* i = new Inkblot;
-   i->load(x,y,250,250,time,ID);
+   i->load(x,y,250,250,time,follow,"inkblot");
    i->setDrawWidth(w);
    i->setDrawHeight(h);
    explosions.push_back(i);
