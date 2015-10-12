@@ -9,7 +9,7 @@ class MantaRay : public Enemy {
     public:
 
         MantaRay(){
-            speed = 500.0f;
+            speed = 50.0f;
             dx = -1;
             flip = SDL_FLIP_NONE;
         };
