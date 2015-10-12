@@ -73,7 +73,7 @@ void CollisionHandler::playerEnemyCollisions(Player* player, vector<GameObject*>
         // horizontal hit tests
         if (player->Position()->Y() < object->Position()->Y() + object->CollisionHeight() && player->Position()->Y() + player->CollisionHeight() > object->Position()->Y()){
             //hitting the left side
-            if ( player->Position()->X() + object->CollisionWidth() > object->Position()->X() && player->Position()->X() < object->Position()->X()){
+            if ( player->Position()->X() + player->CollisionWidth() > object->Position()->X() && player->Position()->X() < object->Position()->X()){
                 if (object->Solid()){
                     player->setPosition({object->Position()->X() - player->Width(), player->Position()->Y()});
                 }

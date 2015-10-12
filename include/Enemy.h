@@ -16,6 +16,9 @@ class Enemy : public GameObject {
 
     protected:
         int viewDistance = 300;
+        int attackTimer;
+        int maxAttackTime;
+        string state = "idle";
 
     private:
 

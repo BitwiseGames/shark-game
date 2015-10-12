@@ -89,9 +89,16 @@ void BulletHandler::addPlayerBullet(int x, int y, float rot, string type, int en
 }
 
 void BulletHandler::addEnemyBullet(int x, int y, float rot, string type){
-    SoundHandler::getTheInstance()->playSound("gunshot", 0);
     Bullet* b = new Bullet();
-    b->load(x, y, BULLET_SIZE, BULLET_SIZE, BULLET_SPEED, rot, "enemybullet");
-    b->setCollisionLayers(collisionLayers);
-    enemyBullets.push_back(b);
+    if (type == "bullet"){
+        SoundHandler::getTheInstance()->playSound("gunshot", 0);
+        b->load(x, y, BULLET_SIZE, BULLET_SIZE, BULLET_SPEED, rot, "enemybullet");
+        b->setCollisionLayers(collisionLayers);
+        enemyBullets.push_back(b);
+    }
+    else if (type == "manta_ray_stinger"){
+        b->load(x, y, 64, 32, BULLET_SPEED, rot, "manta_ray_stinger", 30);
+        b->setCollisionLayers(collisionLayers);
+        enemyBullets.push_back(b);
+    }
 }

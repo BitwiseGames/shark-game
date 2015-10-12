@@ -7,7 +7,7 @@ class Bullet : public GameObject {
     public:
         void update();
         void render();
-        void load(int, int, int, int, float, float, string);
+        void load(int, int, int, int, float, float, string, int = -1);
         void setHealth(int newHealth){
             health = newHealth;
             if (health <= 0){
@@ -25,6 +25,7 @@ class Bullet : public GameObject {
     private:
         int drawWidth;
         int drawHeight;
+        int maxTime = 0; // some bullets will stay alive for a time period, instead of until they hit something
         float speed;
 };
 

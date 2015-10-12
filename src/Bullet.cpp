@@ -9,14 +9,23 @@
 #define pi 3.1415926535897932384626433832795
 
 void Bullet::update(){
-    float newX = cos(rotation / 180 * pi) * speed * Game::getTheInstance()->getDeltaTime();
-    float newY = sin(rotation / 180 * pi) * speed * Game::getTheInstance()->getDeltaTime();
-    position.setX( position.X() + newX);
-    position.setY( position.Y() + newY);
-    if (tileCollisions(position)){
-        dead = true;
-        if (textureID == "playerrocket"){
-            ExplosionHandler::getTheInstance()->addExplosion(position.X(), position.Y(), 150, 150, 14);
+
+    if (maxTime < 0){ // this type of bullet moves
+        float newX = cos(rotation / 180 * pi) * speed * Game::getTheInstance()->getDeltaTime();
+        float newY = sin(rotation / 180 * pi) * speed * Game::getTheInstance()->getDeltaTime();
+        position.setX( position.X() + newX);
+        position.setY( position.Y() + newY);
+        if (tileCollisions(position)){
+            dead = true;
+            if (textureID == "playerrocket"){
+                ExplosionHandler::getTheInstance()->addExplosion(position.X(), position.Y(), 150, 150, 14);
+            }
+        }
+    }
+    else { // this type of bullet does NOT move
+        maxTime--;
+        if (maxTime <= 0){
+            dead = true;
         }
     }
 }
@@ -27,7 +36,7 @@ void Bullet::render(){
     TextureHandler::getTheInstance()->renderScale(textureID, srcRect, dstRect, Game::getTheInstance()->getRenderer(), rotation);
 }
 
-void Bullet::load(int x, int y, int w, int h, float s, float rot, string ID){
+void Bullet::load(int x, int y, int w, int h, float s, float rot, string ID, int mt){
     position.setX(x);
     position.setY(y);
     width = w;
@@ -37,6 +46,7 @@ void Bullet::load(int x, int y, int w, int h, float s, float rot, string ID){
     rotation = rot;
     currentFrame = 0;
     currentRow = 0;
+    maxTime = mt;
     drawWidth = width;
     drawHeight = height;
     collisionWidth = width;
