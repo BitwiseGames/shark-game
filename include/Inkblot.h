@@ -3,7 +3,9 @@
 
 #include "Explosion.h"
 #include "TextureHandler.h"
+#include "CollisionHandler.h"
 #include "Game.h"
+#include "Player.h"
 #include "Camera.h"
 
 class Inkblot : public Explosion {
@@ -18,7 +20,16 @@ class Inkblot : public Explosion {
 
         void render(){
             SDL_Rect srcRect = {0, 0, width, height};
-            SDL_Rect dstRect = {position.X() - Camera::getTheInstance()->getPosition().X(), position.Y() - Camera::getTheInstance()->getPosition().Y(), drawWidth, drawHeight};
+            SDL_Rect dstRect;
+            if (followPlayer){
+                int px = CollisionHandler::getTheInstance()->getPlayer()->Position()->X();
+                int py = CollisionHandler::getTheInstance()->getPlayer()->Position()->Y();
+                dstRect = {px - (drawWidth/2) - Camera::getTheInstance()->getPosition().X(), py - (drawHeight/2) - Camera::getTheInstance()->getPosition().Y(), drawWidth, drawHeight};
+            }
+            else {
+                dstRect = {position.X() - Camera::getTheInstance()->getPosition().X(), position.Y() - Camera::getTheInstance()->getPosition().Y(), drawWidth, drawHeight};
+            }
+
             TextureHandler::getTheInstance()->renderScale(textureID, srcRect, dstRect, Game::getTheInstance()->getRenderer(), rotation);
         }
 
