@@ -9,6 +9,7 @@
 #include "ElectricEel.h"
 #include "Jellyfish.h"
 #include "Octopus.h"
+#include "MantaRay.h"
 #include "GoldenEgg.h"
 #include "MainMenuState.h"
 #include "PlayState.h"
@@ -48,6 +49,7 @@ bool Game::startGame(){
   GameObjectFactory::getTheInstance()->registerType("PufferFish", new PufferFishCreator());
   GameObjectFactory::getTheInstance()->registerType("GoldenEgg", new GoldenEggCreator());
   GameObjectFactory::getTheInstance()->registerType("Jellyfish", new JellyfishCreator());
+  GameObjectFactory::getTheInstance()->registerType("MantaRay", new MantaRayCreator());
   GameObjectFactory::getTheInstance()->registerType("Octopus", new OctopusCreator());
   GameObjectFactory::getTheInstance()->registerType("Player", new PlayerCreator());
 
